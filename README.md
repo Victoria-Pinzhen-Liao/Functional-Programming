@@ -1,10 +1,10 @@
-# Principles of Functional Programming [WIP]
+ 
 
 ## About  
 
 :octocat: GitHub: All of the example code are in this [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
 
-:page_facing_up:  blog link: https://purrgramming.life/cs/os/parallel    :star:
+:page_facing_up:  blog link: https://purrgramming.life/cs/programming/fp/intro/   :star:
 
 -------------------------------------------
 
