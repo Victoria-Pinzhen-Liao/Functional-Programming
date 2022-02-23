@@ -8,7 +8,7 @@
 
 -------------------------------------------
 
-These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/week/1) from École Polytechnique Fédérale de Lausanne (EPFL)
+These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/week/1) by the Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL) (btw that's who created Scala )
 
 -------------------------------------------
 
