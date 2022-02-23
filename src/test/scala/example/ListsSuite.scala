@@ -20,9 +20,9 @@ class ListsSuite extends munit.FunSuite:
     assert(1 + 1 == 2)
   }
 
-  test("one plus one is three (0pts)?") {
-    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
-  }
+//  test("one plus one is three (0pts)?") {
+//    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
+//  }
 
   /**
    * One problem with the previous (failing) test is that munit will
@@ -56,8 +56,12 @@ class ListsSuite extends munit.FunSuite:
    * We recommend to always use the assertEquals equality operator
    * when writing tests.
    */
-  test("details why one plus one is not three (0pts)") {
-    assertEquals(1 + 1, 3) // Fix me, please!
+//  test("details why one plus one is not three (0pts)") {
+//    assertEquals(1 + 1, 3) // Fix me, please!
+//  }
+
+  test("One plus one is two (0pts)") {
+    assertEquals(1 + 1, 2) // Fix me, please!
   }
 
   /**
