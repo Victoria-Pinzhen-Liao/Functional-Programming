@@ -8,7 +8,7 @@ package example
  *
  * To run this test suite, start "sbt" then run the "test" command.
  */
-class ListsSuite extends munit.FunSuite:
+class ListsSuite extends munit.FunSuite :
 
   /**
    * Tests are written using the `test("description") { ... }` syntax
@@ -19,10 +19,6 @@ class ListsSuite extends munit.FunSuite:
   test("one plus one is two (0pts)") {
     assert(1 + 1 == 2)
   }
-
-//  test("one plus one is three (0pts)?") {
-//    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
-//  }
 
   /**
    * One problem with the previous (failing) test is that munit will
@@ -56,9 +52,9 @@ class ListsSuite extends munit.FunSuite:
    * We recommend to always use the assertEquals equality operator
    * when writing tests.
    */
-//  test("details why one plus one is not three (0pts)") {
-//    assertEquals(1 + 1, 3) // Fix me, please!
-//  }
+  //  test("details why one plus one is not three (0pts)") {
+  //    assertEquals(1 + 1, 3) // Fix me, please!
+  //  }
 
   test("One plus one is two (0pts)") {
     assertEquals(1 + 1, 2) // Fix me, please!
@@ -71,25 +67,25 @@ class ListsSuite extends munit.FunSuite:
    * In the following example, we test the fact that the method `intNotZero`
    * throws an `IllegalArgumentException` if its argument is `0`.
    */
-   test("intNotZero throws an exception if its argument is 0") {
-     try
-       intNotZero(0)
-       fail("No exception has been thrown")
-     catch
-       case e: IllegalArgumentException => ()
-   }
+  test("intNotZero throws an exception if its argument is 0") {
+    try
+      intNotZero(0)
+      fail("No exception has been thrown")
+    catch
+      case e: IllegalArgumentException => ()
+  }
 
-   def intNotZero(x: Int): Int =
-     if x == 0 then throw IllegalArgumentException("zero is not allowed")
-     else x
+  def intNotZero(x: Int): Int =
+    if x == 0 then throw IllegalArgumentException("zero is not allowed")
+    else x
 
   /**
    * Now we finally write some tests for the list functions that have to be
    * implemented for this assignment. We fist import all members of the
    * `List` object.
    */
-  import Lists.*
 
+  import coursework.Lists.*
 
   /**
    * We only provide two very basic tests for you. Write more tests to make
@@ -103,14 +99,13 @@ class ListsSuite extends munit.FunSuite:
    * every tested aspect of a method.
    */
   test("sum of a few numbers (10pts)") {
-    assert(sum(List(1,2,0)) == 3)
+    assert(sum(List(1, 2, 0)) == 3)
   }
 
   test("max of a few numbers (10pts)") {
     assert(max(List(3, 7, 2)) == 7)
   }
 
-
-
   import scala.concurrent.duration.*
+
   override val munitTimeout = 1.seconds

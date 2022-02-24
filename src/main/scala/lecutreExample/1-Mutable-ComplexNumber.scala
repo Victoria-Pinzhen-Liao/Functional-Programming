@@ -1,5 +1,9 @@
 package lecutreExample
 
-class MutableComplexNumber (val real: Int, var imaginary: Int){
-  // Return a new complex number
+class MutableComplexNumber(var real: Int, var imaginary: Int) {
+  // Change this complex number
+  def add(that: MutableComplexNumber) = {
+    real += that.real
+    imaginary += that.imaginary
+  }
 }
