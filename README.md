@@ -6,7 +6,7 @@
 
 :octocat: GitHub: All of the example code: [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
 
-:page_facing_up:  blog link: https://purrgramming.life/cs/os/parallel    :star:
+:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/intro/   :star:
 
 -------------------------------------------
 
@@ -147,11 +147,7 @@ Functions in a FP language are first-class citizens. This means
 - as for other values, there exists a set of operators to compose functions
 - i.e. functions can be values that are produced, consumed, and composed
 
-### Functional Contract
 
-- A method with a  **functional contract**  will always return the same value to the same arguments.
-- Have no other side effects (like storing files, printing, reading). 
-- Thus, even if you mutate temporary values inside your function, it's still pure from the outside. 
 
 ### Benefits
  
@@ -203,7 +199,209 @@ class ImmutableComplexNumberTest extends munit.FunSuite {
   assertEquals(thatImmutableComplexNumber.imaginary, 4)  
  }}
 ```
-------------
+
+## Tool: REPL (An  interactive shell)
+
+Functional programming is a bit like using a calculator 
+
+An interactive shell (or [REPL, for Read-Eval-Print-Loop](https://docs.scala-lang.org/overviews/scala-book/scala-repl.html)) lets one write expressions and responds with their value.  Alternatively, you can use scala worksheet
+
+
+
+**Doc**
+REPL: https://docs.scala-lang.org/overviews/scala-book/scala-repl.html
+Scala worksheet: https://docs.scala-lang.org/scala3/book/tools-worksheets.html
+
+**Example**
+
+The Scala REPL can be started by simply typing 
+```scala
+> scala
+```
+
+Here are some simple interactions with the REPL 
+```scala
+scala> 87 + 145 
+res0: Int = 232 
+```
+
+Functional programming languages are more than simple calcululators because they let one define `values and functions`: 
+```scala
+scala> def size = 2 
+size: Int 
+
+scala> 5 * size 
+res1: Int = 10
+```
+
+
+## Elements of Programming
+
+
+Every non-trivial programming language provides: 
+- primitive* expressions representing the simplest elements  
+-  ways to combine expressions 
+-  ways to abstract expressions, which introduce a name for an expression by which it can then be referred to.
+
+### Primitive 
+In Scala, Primitive types are as in Java, but are written capitalized: 
+
+$$
+\begin{array}{ll}
+\text { Int } & \text { 32-bit integers } \\
+\text { Long } & \text { 64-bit integers } \\
+\text { Float } & \text { 32-bit floating point numbers } \\
+\text { Double } & \text { 64-bit floating point numbers } \\
+\text { Char } & \text { 16-bit unicode characters } \\
+\text { Short } & \text { 16-bit integers } \\
+\text { Byte } & \text { 8-bit integers } \\
+\text { Boolean } & \text { boolean values true and false }
+\end{array}
+$$
+ 
+
+### Evaluation 
+
+A non-primitive expression is evaluated as follows. 
+1. Take the leftmost operator 
+2.  Evaluate its operands (left before right) 
+3.  Apply the operator to the operands 
+
+A name is evaluated by replacing it with the right hand side of its definition 
+The evaluation process stops once it results in a value
+
+
+#### Example： Circumference
+
+![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645746285121.png)
+
+```scala
+// Circumference  
+def pi = 3.14159  
+def radius = 10  
+(2 * pi) * radius
+```
+
+Scala worksheet output
+
+```scala
+def pi: Double
+def radius: Int
+val res0: Double = 62.8318
+```
+
+### Parameters
+
+Definitions can have parameters.
+
+
+
+```scala
+def square(x: Double) = x * x  
+  
+square(2)  
+square(5 + 4)  
+square(square(4))  
+```
+
+Output
+
+```scala
+def square(x: Double): Double
+
+val res0: Double = 4.0
+val res1: Double = 81.0
+val res2: Double = 256.0
+
+```
+
+Function parameters come with their type,   which is given after a colon  
+
+```scala
+def sumOfSquares(x: Double, y: Double) = square(x) + square(y)  
+```
+
+
+
+Applications of parameterized functions are evaluated in a similar way as operators: 
+1. Evaluate all function arguments, from left to right 
+2.  Replace the function application by the function’s right-hand side, and, at the same time 
+3.  Replace the formal parameters of the function by the actual arguments
+
+```scala
+sumOfSquares(3, 2+2)
+```
+
+it's actually converted to 
+
+```scala
+-> sumOfSquares(3, 4) 
+-> square(3) + square(4)
+-> 9 + 16
+```
+
+Output
+
+```scala
+def sumOfSquares(x: Double, y: Double): Double
+val res3: Double = 25
+```
+
+
+## The substitution model 
+###  Function Termination
+
+```
+Q: Does every expression reduce to a value (in a finite number of steps)? 
+```
+
+No. Here is a counter-example 
+
+```scala
+def loop: Int = loop loop
+```
+
+### Substitution model
+This scheme of expression evaluation is called the substitution model, where
+- all evaluation does is reduce an expression to a value. 
+- It can be applied to all expressions, as long as they have no side effects (like storing files, printing, reading).
+- The substitution model is formalized in the `λ-calculus`, which gives a foundation for functional programming.
+
+### Functional Contract
+
+- A method with a  **functional contract**  will always return the same value to the same arguments.
+- Have no other side effects (like storing files, printing, reading). 
+- Thus, even if you mutate temporary values inside your function, it's still pure from the outside. 
+
+
+### Changing the evaluation strategy 
+
+The interpreter reduces function arguments to values before rewriting the function application. 
+We could alternatively apply the function to unreduced arguments. For instance:
+ 
+```scala
+sumOfSquares(3, 2+2) 
+```
+is the same as 
+
+```scala
+square(3) + square(2+2) 
+```
+ 
+ ## Call-by-name and call-by-value 
+
+
+Both strategies reduce to the same final values as long as
+- the reduced expression consists of pure functions, and
+- both evaluations terminate.
+
+Call-by-value has the advantage that it evaluates every function argument
+only once.
+
+Call-by-name has the advantage that a function argument is not evaluated
+if the corresponding parameter is unused in the evaluation of the function
+body. 
+
 
 WIP 
 
