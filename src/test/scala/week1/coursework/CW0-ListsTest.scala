@@ -85,7 +85,7 @@ class ListsSuite extends munit.FunSuite :
    * `List` object.
    */
 
-  import coursework.Lists.*
+  import week1.coursework.Lists.*
 
   /**
    * We only provide two very basic tests for you. Write more tests to make

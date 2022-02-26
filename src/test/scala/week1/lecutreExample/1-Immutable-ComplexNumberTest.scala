@@ -1,6 +1,6 @@
-package lecutreExample
+package week1.lecutreExample
 
-import lecutreExample.ImmutableComplexNumber
+import week1.lecutreExample.ImmutableComplexNumber
 
 class ImmutableComplexNumberTest extends munit.FunSuite {
   test("when adding two immutable complex number," +

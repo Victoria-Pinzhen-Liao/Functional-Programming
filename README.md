@@ -88,19 +88,20 @@ class MutableComplexNumber(var real: Int, var imaginary: Int) {
 We can see that when adding two mutable complex numbers, the function will not return a new complex number, and instead, the original complex number (the addend) is changed.
 
 ```scala
-import lecutreExample.MutableComplexNumber
+import week1.lecutreExample.MutableComplexNumber
 
-class MutableComplexNumberTest extends munit.FunSuite {  
-  test("when adding two mutable complex numbers," +  
-    "will not get a new complex number ," +  
-    "and the original numbers will be changed") {  
-  val thisMutableComplexNumber = MutableComplexNumber(1, 2)  
-  val thatMutableComplexNumber = MutableComplexNumber(3, 4)  
-  thisMutableComplexNumber.add(thatMutableComplexNumber)  
-  
-  assertEquals(thisMutableComplexNumber.real, 4)  
-  assertEquals(thisMutableComplexNumber.imaginary, 6)  
- }}
+class MutableComplexNumberTest extends munit.FunSuite {
+  test("when adding two mutable complex numbers," +
+    "will not get a new complex number ," +
+    "and the original numbers will be changed") {
+    val thisMutableComplexNumber = MutableComplexNumber(1, 2)
+    val thatMutableComplexNumber = MutableComplexNumber(3, 4)
+    thisMutableComplexNumber.add(thatMutableComplexNumber)
+
+    assertEquals(thisMutableComplexNumber.real, 4)
+    assertEquals(thisMutableComplexNumber.imaginary, 6)
+  }
+}
 ```
 
 
@@ -181,23 +182,24 @@ class ImmutableComplexNumber(val real: Int, val imaginary: Int) {
 We can see that when adding two immutable complex numbers, the function will return a new complex number, and the original complex numbers (addends) won't change.
 
 ```scala
-  
-import lecutreExample.ImmutableComplexNumber  
-  
-class ImmutableComplexNumberTest extends munit.FunSuite {  
-  test("when adding two immutable complex number," +  
-    "will get a new complex number ," +  
-    "and the original numbers won't change") {  
-  val thisImmutableComplexNumber = ImmutableComplexNumber(1, 2)  
-  val thatImmutableComplexNumber = ImmutableComplexNumber(3, 4)  
-  val newImmutableComplexNumber = thisImmutableComplexNumber.add(thatImmutableComplexNumber)  
-  assertEquals(newImmutableComplexNumber.real, 4)  
-  assertEquals(newImmutableComplexNumber.imaginary, 6)  
-  assertEquals(thisImmutableComplexNumber.real, 1)  
-  assertEquals(thisImmutableComplexNumber.imaginary, 2)  
-  assertEquals(thatImmutableComplexNumber.real, 3)  
-  assertEquals(thatImmutableComplexNumber.imaginary, 4)  
- }}
+
+import week1.lecutreExample.ImmutableComplexNumber
+
+class ImmutableComplexNumberTest extends munit.FunSuite {
+  test("when adding two immutable complex number," +
+    "will get a new complex number ," +
+    "and the original numbers won't change") {
+    val thisImmutableComplexNumber = ImmutableComplexNumber(1, 2)
+    val thatImmutableComplexNumber = ImmutableComplexNumber(3, 4)
+    val newImmutableComplexNumber = thisImmutableComplexNumber.add(thatImmutableComplexNumber)
+    assertEquals(newImmutableComplexNumber.real, 4)
+    assertEquals(newImmutableComplexNumber.imaginary, 6)
+    assertEquals(thisImmutableComplexNumber.real, 1)
+    assertEquals(thisImmutableComplexNumber.imaginary, 2)
+    assertEquals(thatImmutableComplexNumber.real, 3)
+    assertEquals(thatImmutableComplexNumber.imaginary, 4)
+  }
+}
 ```
 
 ## Tool: REPL (An  interactive shell)

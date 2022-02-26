@@ -1,4 +1,4 @@
-package lecutreExample
+package week1.lecutreExample
 
 class ImmutableComplexNumber(val real: Int, val imaginary: Int) {
   // Return a new complex number

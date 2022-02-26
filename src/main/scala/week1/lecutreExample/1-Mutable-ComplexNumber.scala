@@ -1,4 +1,4 @@
-package lecutreExample
+package week1.lecutreExample
 
 class MutableComplexNumber(var real: Int, var imaginary: Int) {
   // Change this complex number

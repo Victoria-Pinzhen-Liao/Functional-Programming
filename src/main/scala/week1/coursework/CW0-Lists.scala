@@ -1,4 +1,4 @@
-package coursework
+package week1.coursework
 
 object Lists:
 
