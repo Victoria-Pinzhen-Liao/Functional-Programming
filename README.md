@@ -1,6 +1,6 @@
 
 
-#  [1] Principles of Functional Programming
+#  (1) Principles of Functional Programming
 
 ## About  
 
@@ -55,7 +55,7 @@ i.e.  Need to define high-level abstractions such as collections, polynomials, g
 
  
  
-###  Example: Complex number Theory
+###  Example: Complex Number Theory
 
 #### Definition of Theory 
 
@@ -208,7 +208,7 @@ class ImmutableComplexNumberTest extends munit.FunSuite {
  }}
 ```
 
-## Tool: REPL (An  interactive shell)
+## Tool: REPL
 
 Functional programming is a bit like using a calculator 
 
@@ -356,7 +356,7 @@ val res3: Double = 25
 ```
 
 
-## The substitution model 
+## The substitution Model 
 ###  Function Termination
 
 ```
@@ -383,9 +383,9 @@ This scheme of expression evaluation is called the substitution model, where
 
 
 
- ## Call-by-name and call-by-value 
+ ## Call-by-Name and Call-by-Value 
 
-### Call-by-value 
+### Call-by-Value 
 
 The interpreter reduces function arguments to values before rewriting the function application. 
 
@@ -402,7 +402,7 @@ square(3) + square(2+2)
 25
 ```
 
-### Call-by-name 
+### Call-by-Name 
 
 Apply the function to unreduced arguments.  
 We  prepend  _**=>**_  (rocket symbol) to its type.
