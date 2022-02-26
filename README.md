@@ -1,12 +1,12 @@
 
 
-# Introduction to Functional Programming [WIP]
+#  (1) Principles of Functional Programming
 
 ## About  
 
 :octocat: GitHub: All of the example code: [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
 
-:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/intro/   :star:
+:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/  :star:
 
 -------------------------------------------
 
@@ -14,11 +14,19 @@ These are my lecture notes and code for Coursera online course [Functional Progr
 
 -------------------------------------------
 
-## Background 
+This blog answers 
+
+1. What is functional programming?
+2. Why functional programming?
+3. Advantage of functional programming
+
+-------------------------------------------
+
+## Programming Paradigms 
 
 **Paradigm** - In science, a paradigm describes distinct concepts or thought patterns in some scientific discipline. 
   
-### Programming Paradigms 
+
 
  
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655330430.png)
@@ -47,7 +55,7 @@ i.e.  Need to define high-level abstractions such as collections, polynomials, g
 
  
  
-###  Example: Complex number Theory
+###  Example: Complex Number Theory
 
 #### Definition of Theory 
 
@@ -202,7 +210,7 @@ class ImmutableComplexNumberTest extends munit.FunSuite {
 }
 ```
 
-## Tool: REPL (An  interactive shell)
+## Tool: REPL
 
 Functional programming is a bit like using a calculator 
 
@@ -350,7 +358,7 @@ val res3: Double = 25
 ```
 
 
-## The substitution model 
+## The substitution Model 
 ###  Function Termination
 
 ```
@@ -363,7 +371,7 @@ No. Here is a counter-example
 def loop: Int = loop loop
 ```
 
-### Substitution model
+### Substitution Model
 This scheme of expression evaluation is called the substitution model, where
 - all evaluation does is reduce an expression to a value. 
 - It can be applied to all expressions, as long as they have no side effects (like storing files, printing, reading).
@@ -376,41 +384,231 @@ This scheme of expression evaluation is called the substitution model, where
 - Thus, even if you mutate temporary values inside your function, it's still pure from the outside. 
 
 
-### Changing the evaluation strategy 
+
+ ## Call-by-Name and Call-by-Value 
+
+### Call-by-Value 
 
 The interpreter reduces function arguments to values before rewriting the function application. 
-We could alternatively apply the function to unreduced arguments. For instance:
- 
+
 ```scala
+def square(x:  Double ) = x * x
+def sumOfSquares(x: Double, y: Double) = square(x) + square(y)  
 sumOfSquares(3, 2+2) 
+square(3) + square(2+2) 
+3 * 3 + square(2+2) 
+9 + square(2+2) 
+9 + (2+2) * (2+2) 
+9 + 4 * (2+2) 
+9 + 4 * 4 
+25
 ```
-is the same as 
+
+### Call-by-Name 
+
+Apply the function to unreduced arguments.  
+We  prepend  _**=>**_  (rocket symbol) to its type.
+ 
+```scala
+def callByNameFunc(input: => InputType)  
+```
 
 ```scala
-square(3) + square(2+2) 
-```
+def square(x: =>  Double ) = x*x
+def sumOfSquares(x: => Double, y: => Double) = square(x) + square(y)  
+sumOfSquares(3, 2+2) 
+sumOfSquares(3, 4) 
+square(3) + square(4) 
+3 * 3 + square(4) 
+9 + square(4) 
+9 + 4 * 4 
+9 + 16 
+25
+ ```
  
- ## Call-by-name and call-by-value 
-
-
+ ### Result Compare 
 Both strategies reduce to the same final values as long as
 - the reduced expression consists of pure functions, and
 - both evaluations terminate.
 
-Call-by-value has the advantage that it evaluates every function argument
-only once.
+### Performance 
 
-Call-by-name has the advantage that a function argument is not evaluated
-if the corresponding parameter is unused in the evaluation of the function
-body. 
+Say we have a function that takes 2 inputs , and  returns the square of the first input 
+i.e. the 2nd input is not used
+
+```scala
+def squareOfFirstElement(x: Int, y: Int) = x * x
+```
+
+Which one is faster? Call by name or call by value?
+```
+squareOfFirstElement(7, 8)  
+squareOfFirstElement(3+4, 8) 
+squareOfFirstElement(7, 2*4)  
+squareOfFirstElement(3+4, 2*4)  
+```
+
+We want to examine the evaluation strategy and determine which one is faster (less steps) in these conditions:
+
+#### Senario 1 
+
+```scala
+squareOfFirstElement(2,3)
+```
+
+call by value: 
+```scala
+squareOfFirstElement(2,3) 
+↓ 
+2*2 
+↓
+4  
+```
+call by name: 
+```scala
+squareOfFirstElement(2,3) 
+↓
+2*2 
+↓
+4  
+```
+
+Here the result is reached with the same number of steps.
+
+#### Senario 2 
+
+```scala
+squareOfFirstElement(3+4,8)
+```
 
 
-WIP 
+call by value: 
+```scala
+squareOfFirstElement(7,8) 
+↓ 
+7*7
+↓ 
+49  
+```
 
-![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655296547.png)
+call by name: 
+```scala
+(3+4)*(3+4) 
+↓
+7*(3+4)
+↓
+7*7 
+↓
+49  
+```
+Here call by value is faster.
 
-## Reference
-- (2022). Retrieved 23 February 2022, from https://www.coursera.org/learn/scala-functional-programming/lecture/EQ7BX/lecture-1-1-programming-paradigms
--  Washing your code: avoid mutation. (2022). Retrieved 23 February 2022, from https://blog.sapegin.me/all/avoid-mutation/#:~:text=Mutation%20may%20lead%20to%20unexpected,careful%20when%20reading%20the%20code.
+#### Senario 3
 
- 
+```scala
+squareOfFirstElement(7,2*4)
+```
+
+
+call by value: 
+```scala
+squareOfFirstElement(7,8) 
+↓ 
+7*7 
+↓
+49
+```  
+call by name: 
+```scala
+7 * 7 
+↓ 
+49  
+```
+Here call by name is faster
+
+#### Senario 4
+
+```scala
+squareOfFirstElement(3+4, 2*4) 
+```
+
+call by value: 
+
+```scala
+squareOfFirstElement(7,2*4) 
+↓ 
+squareOfFirstElement(7, 8)
+↓
+7*7 
+↓
+49  
+```
+
+call by name: 
+```scala
+(3+4)*(3+4)
+↓
+7*(3+4) 
+↓ 
+7*7
+↓ 
+49  
+```
+The result is reached within the same steps.
+
+
+### Advantage
+Call-by-value 
+-  it evaluates every function argument only once
+- avoids the repeated re-computation of argument expressions
+
+Call-by-name 
+- a function argument is not evaluated if the corresponding parameter is unused in the evaluation of the function body. 
+
+
+### Termination
+
+Call-by-name and call-by-value evaluation strategies reduce an expression to the same value, as long as both evaluations terminate. 
+
+```
+Q: But what if termination is not guaranteed?
+```
+
+If CBV evaluation of an expression `#e` terminates, then CBN evaluation of `#e` terminates, too. 
+The other direction is not true
+
+| Terminates? | CallByName | CallByValue | Possible? |
+|-------------|------------|-------------|-----------|
+| 1           | T          | T           | T         |
+| 2           | F          | T           | F         |
+| 3           | F          | F           | T         |
+| 4           | T          | F           | T         |
+
+#### Example
+
+Find an expression that terminates under CBN but not under CBV
+
+```scala
+def firstByValue(x: Int, y: Int) = x  
+def firstByName(x: => Int, y: => Int) = x  
+  
+def loop: Int = {  
+  while (true) {  
+    Thread.sleep(1000)  
+  }  
+  1  
+}  
+
+// #loop never called，
+firstByName(1, loop)  
+// Return: val res0: Int = 1
+
+// Whill try to exe #loop first 
+firstByValue(1, loop) 
+// Never end
+```
+
+
+
+
+
