@@ -1,16 +1,14 @@
-
-
 #  (1) Principles of Functional Programming
 
 ## About  
 
 :octocat: GitHub: All of the example code: [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
 
-:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/  :star:
+:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/   :star:
 
 -------------------------------------------
 
-These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/week/1) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL) (btw that's who created Scala )
+These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala 
 
 -------------------------------------------
 
@@ -96,27 +94,26 @@ class MutableComplexNumber(var real: Int, var imaginary: Int) {
 We can see that when adding two mutable complex numbers, the function will not return a new complex number, and instead, the original complex number (the addend) is changed.
 
 ```scala
-import week1.lecutreExample.MutableComplexNumber
+import lecutreExample.MutableComplexNumber
 
-class MutableComplexNumberTest extends munit.FunSuite {
-  test("when adding two mutable complex numbers," +
-    "will not get a new complex number ," +
-    "and the original numbers will be changed") {
-    val thisMutableComplexNumber = MutableComplexNumber(1, 2)
-    val thatMutableComplexNumber = MutableComplexNumber(3, 4)
-    thisMutableComplexNumber.add(thatMutableComplexNumber)
-
-    assertEquals(thisMutableComplexNumber.real, 4)
-    assertEquals(thisMutableComplexNumber.imaginary, 6)
-  }
-}
+class MutableComplexNumberTest extends munit.FunSuite {  
+  test("when adding two mutable complex numbers," +  
+    "will not get a new complex number ," +  
+    "and the original numbers will be changed") {  
+  val thisMutableComplexNumber = MutableComplexNumber(1, 2)  
+  val thatMutableComplexNumber = MutableComplexNumber(3, 4)  
+  thisMutableComplexNumber.add(thatMutableComplexNumber)  
+  
+  assertEquals(thisMutableComplexNumber.real, 4)  
+  assertEquals(thisMutableComplexNumber.imaginary, 6)  
+ }}
 ```
 
 
 ### Issue of Mutation
 
 #### In Math
-There's no place for the mutation if we implement high-level concepts following their mathematical theories.
+There is no place for mutation if we implement high-level concepts following their mathematical theories.
 - The theories do not admit it. 
 -  Mutation can destroy useful laws in the theories.
 
@@ -132,12 +129,12 @@ The mutation changes an object and is one common side effect in programming lang
 
 ### Definition 
 
-**Restricted** :  A functional programming language is one which does ***not*** have 
+**Restricted** :  A functional programming language  does ***not*** have 
 - mutable variables
 -  assignments, 
 - or imperative control structures. 
 
-**Wider** : a functional programming language focus on functions and immutable data structures.
+**Wider** : a functional programming language focused on functions and immutable data structures.
 
 ### FP Languages
 
@@ -150,7 +147,7 @@ Concepts and constructs from functional languages are also found in many traditi
 
 ### Functions in FP
 
-Functions in a FP language are first-class citizens. This means 
+Functions in an FP language are first-class citizens i.e.  
 -  they can be defined anywhere, including inside other functions
 -  like any other value, they can be passed as parameters to functions and returned as results 
 - as for other values, there exists a set of operators to compose functions
@@ -172,7 +169,7 @@ More philosophical
 - Higher-level abstractions
 
 Morden
--  It’s an effective tool to handle concurrency and parallelism, on every scale
+- It is an effective tool to handle concurrency and parallelism on every scale
 - Our computers are not Van-Neuman machines anymore. They are parallel 
 
 ### Coding Example
@@ -187,34 +184,33 @@ class ImmutableComplexNumber(val real: Int, val imaginary: Int) {
  }}
 ```
 
-We can see that when adding two immutable complex numbers, the function will return a new complex number, and the original complex numbers (addends) won't change.
+We can see that when adding two immutable complex numbers, the function will return a new complex number, and the original complex numbers (addends) will not change.
 
 ```scala
-
-import week1.lecutreExample.ImmutableComplexNumber
-
-class ImmutableComplexNumberTest extends munit.FunSuite {
-  test("when adding two immutable complex number," +
-    "will get a new complex number ," +
-    "and the original numbers won't change") {
-    val thisImmutableComplexNumber = ImmutableComplexNumber(1, 2)
-    val thatImmutableComplexNumber = ImmutableComplexNumber(3, 4)
-    val newImmutableComplexNumber = thisImmutableComplexNumber.add(thatImmutableComplexNumber)
-    assertEquals(newImmutableComplexNumber.real, 4)
-    assertEquals(newImmutableComplexNumber.imaginary, 6)
-    assertEquals(thisImmutableComplexNumber.real, 1)
-    assertEquals(thisImmutableComplexNumber.imaginary, 2)
-    assertEquals(thatImmutableComplexNumber.real, 3)
-    assertEquals(thatImmutableComplexNumber.imaginary, 4)
-  }
-}
+  
+import lecutreExample.ImmutableComplexNumber  
+  
+class ImmutableComplexNumberTest extends munit.FunSuite {  
+  test("when adding two immutable complex number," +  
+    "will get a new complex number ," +  
+    "and the original numbers won't change") {  
+  val thisImmutableComplexNumber = ImmutableComplexNumber(1, 2)  
+  val thatImmutableComplexNumber = ImmutableComplexNumber(3, 4)  
+  val newImmutableComplexNumber = thisImmutableComplexNumber.add(thatImmutableComplexNumber)  
+  assertEquals(newImmutableComplexNumber.real, 4)  
+  assertEquals(newImmutableComplexNumber.imaginary, 6)  
+  assertEquals(thisImmutableComplexNumber.real, 1)  
+  assertEquals(thisImmutableComplexNumber.imaginary, 2)  
+  assertEquals(thatImmutableComplexNumber.real, 3)  
+  assertEquals(thatImmutableComplexNumber.imaginary, 4)  
+ }}
 ```
 
 ## Tool: REPL
 
-Functional programming is a bit like using a calculator 
+Functional programming is a bit like using a calculator. 
 
-An interactive shell (or [REPL, for Read-Eval-Print-Loop](https://docs.scala-lang.org/overviews/scala-book/scala-repl.html)) lets one write expressions and responds with their value.  Alternatively, you can use scala worksheet
+An interactive shell (or [REPL, for Read-Eval-Print-Loop](https://docs.scala-lang.org/overviews/scala-book/scala-repl.html)) lets one write expressions and responds with their value.  Alternatively, you can use a scala worksheet.
 
 
 
@@ -251,10 +247,10 @@ res1: Int = 10
 Every non-trivial programming language provides: 
 - primitive* expressions representing the simplest elements  
 -  ways to combine expressions 
--  ways to abstract expressions, which introduce a name for an expression by which it can then be referred to.
+-  ways to abstract expressions, which introduce a name for an expression that can then be referred to.
 
 ### Primitive 
-In Scala, Primitive types are as in Java, but are written capitalized: 
+In Scala, Primitive types are similar to Java but are written capitalized: 
 
 $$
 \begin{array}{ll}
@@ -277,8 +273,8 @@ A non-primitive expression is evaluated as follows.
 2.  Evaluate its operands (left before right) 
 3.  Apply the operator to the operands 
 
-A name is evaluated by replacing it with the right hand side of its definition 
-The evaluation process stops once it results in a value
+A name is evaluated by replacing it with the right-hand side of its definition. 
+The evaluation process stops once it results in a value.
 
 
 #### Example： Circumference
@@ -325,7 +321,7 @@ val res2: Double = 256.0
 
 ```
 
-Function parameters come with their type,   which is given after a colon  
+Function parameters come with their type,   which is given after a colon.  
 
 ```scala
 def sumOfSquares(x: Double, y: Double) = square(x) + square(y)  
@@ -333,16 +329,16 @@ def sumOfSquares(x: Double, y: Double) = square(x) + square(y)
 
 
 
-Applications of parameterized functions are evaluated in a similar way as operators: 
+Applications of parameterized functions are evaluated similarly as operators: 
 1. Evaluate all function arguments, from left to right 
 2.  Replace the function application by the function’s right-hand side, and, at the same time 
-3.  Replace the formal parameters of the function by the actual arguments
+3.  Replace the formal parameters of the function with the actual arguments
 
 ```scala
 sumOfSquares(3, 2+2)
 ```
 
-it's actually converted to 
+it is converted to 
 
 ```scala
 -> sumOfSquares(3, 4) 
@@ -374,14 +370,14 @@ def loop: Int = loop loop
 ### Substitution Model
 This scheme of expression evaluation is called the substitution model, where
 - all evaluation does is reduce an expression to a value. 
-- It can be applied to all expressions, as long as they have no side effects (like storing files, printing, reading).
+- It can be applied to all expressions, as long as they have no side effects (storing files, printing, reading etc.).
 - The substitution model is formalized in the `λ-calculus`, which gives a foundation for functional programming.
 
 ### Functional Contract
 
 - A method with a  **functional contract**  will always return the same value to the same arguments.
 - Have no other side effects (like storing files, printing, reading). 
-- Thus, even if you mutate temporary values inside your function, it's still pure from the outside. 
+- Thus, even if you mutate temporary values inside your function, it is still pure from the outside. 
 
 
 
@@ -407,7 +403,7 @@ square(3) + square(2+2)
 ### Call-by-Name 
 
 Apply the function to unreduced arguments.  
-We  prepend  _**=>**_  (rocket symbol) to its type.
+We prepend  _**=>**_  (rocket symbol) to its type.
  
 ```scala
 def callByNameFunc(input: => InputType)  
@@ -433,7 +429,7 @@ Both strategies reduce to the same final values as long as
 
 ### Performance 
 
-Say we have a function that takes 2 inputs , and  returns the square of the first input 
+Say we have a function that takes two inputs and  returns the square of the first input 
 i.e. the 2nd input is not used
 
 ```scala
@@ -448,9 +444,9 @@ squareOfFirstElement(7, 2*4)
 squareOfFirstElement(3+4, 2*4)  
 ```
 
-We want to examine the evaluation strategy and determine which one is faster (less steps) in these conditions:
+We want to examine the evaluation strategy and determine which one is faster (fewer steps) in these conditions:
 
-#### Senario 1 
+#### Scenario 1 
 
 ```scala
 squareOfFirstElement(2,3)
@@ -524,7 +520,7 @@ call by name:
 ↓ 
 49  
 ```
-Here call by name is faster
+Here call by name is faster.
 
 #### Senario 4
 
@@ -568,14 +564,14 @@ Call-by-name
 
 ### Termination
 
-Call-by-name and call-by-value evaluation strategies reduce an expression to the same value, as long as both evaluations terminate. 
+Call-by-name and call-by-value evaluation strategies reduce an expression to the same value as long as both evaluations terminate. 
 
 ```
 Q: But what if termination is not guaranteed?
 ```
 
 If CBV evaluation of an expression `#e` terminates, then CBN evaluation of `#e` terminates, too. 
-The other direction is not true
+The other direction is not true.
 
 | Terminates? | CallByName | CallByValue | Possible? |
 |-------------|------------|-------------|-----------|
@@ -586,7 +582,7 @@ The other direction is not true
 
 #### Example
 
-Find an expression that terminates under CBN but not under CBV
+Find an expression that terminates under CBN but not under CBV.
 
 ```scala
 def firstByValue(x: Int, y: Int) = x  
@@ -607,8 +603,3 @@ firstByName(1, loop)
 firstByValue(1, loop) 
 // Never end
 ```
-
-
-
-
-
