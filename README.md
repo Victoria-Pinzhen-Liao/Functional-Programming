@@ -420,14 +420,14 @@ square(3) + square(4)
 9 + 4 * 4 
 9 + 16 
 25
- ```
+```
  
- ### Result Compare 
+### Result Comparison
 Both strategies reduce to the same final values as long as
 - the reduced expression consists of pure functions, and
 - both evaluations terminate.
 
-### Performance 
+### Performance Comparison
 
 Say we have a function that takes two inputs and  returns the square of the first input 
 i.e. the 2nd input is not used
@@ -553,7 +553,7 @@ call by name:
 The result is reached within the same steps.
 
 
-### Advantage
+### Advantage Comparison
 Call-by-value 
 -  it evaluates every function argument only once
 - avoids the repeated re-computation of argument expressions
@@ -562,7 +562,7 @@ Call-by-name
 - a function argument is not evaluated if the corresponding parameter is unused in the evaluation of the function body. 
 
 
-### Termination
+### Termination Comparison
 
 Call-by-name and call-by-value evaluation strategies reduce an expression to the same value as long as both evaluations terminate. 
 
@@ -603,3 +603,301 @@ firstByName(1, loop)
 firstByValue(1, loop) 
 // Never end
 ```
+
+
+# (2) Scala Basics 
+
+## About  
+
+:octocat: GitHub: All of the example code: [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
+
+:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/   :star:
+
+-------------------------------------------
+
+These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala 
+
+-------------------------------------------
+
+This blog helps you 
+
+1. Start running Scala on your computer.
+2. Understand `val` vs `var` vs `def` vs method 
+3. Understand  the Scala condition blocks  
+
+-------------------------------------------
+
+## Getting Started
+
+- Get up and running with Scala on your computer: [link](https://www.coursera.org/learn/scala-functional-programming/supplement/BNOBK/tools-setup-please-read)
+- Useful links for learning scala: [link](https://www.coursera.org/learn/scala-functional-programming/supplement/D9pm0/learning-resources)
+
+## Functions and Methods
+
+### Functions
+A function 
+- is a collection of statements that perform a certain task. 
+- is used to put some common and repetitive tasks into a single function, so we can call the function instead of writing the same code again and again for different inputs. 
+- Scala is assumed as a functional programming language, so these play an important role. It makes it easier to debug and modify the code. Scala functions are  **first-class values**.
+
+### Functions vs Methods
+
+Function -  an object which can be stored in a variable. 
+Method - always belongs to a class with a name signature bytecode. 
+
+etc. You can say a method is a function that is a member of some object.
+
+## var vs val 
+
+In Java you declare new variables like this:
+
+```java
+String s = "hello";
+int i = 42;
+Person p = new Person("Victoria Pinzhen Liao");
+
+```
+
+Each variable declaration is preceded by its type.
+
+
+Scala has two types of variables:
+
+-   `val`  creates an  _immutable_  variable (like  `final`  in Java, or `constants` in other languages)
+-   `var`  creates a  _mutable_  variable
+
+This is what variable declaration looks like in Scala:
+
+```scala
+//  variable’s type is  _inferred_  by the compiler 
+val s = "hello"   // immutable
+var i = 42        // mutable
+
+class Person(name: String)
+val p = new Person("Victoria Pinzhen Liao")
+```
+
+Those examples show that the Scala compiler is usually **smart enough** to infer the variable’s data type from the code on the right side of the  `=`  sign. We say that the variable’s type is  _inferred_  by the compiler. 
+
+You can also  _explicitly_  declare the variable type if you prefer:
+
+```scala
+//  _explicitly_  declare the variable type 
+val s: String = "hello"
+var i: Int = 42
+```
+
+### Evaluation time 
+
+`val` and `var` are evaluated when defined.
+
+###  `val`  vs `var`
+
+`val`  makes a variable  _immutable_  — like  `final`  in Java, i.e.  _values_ 
+`var`  makes a variable  _mutable_.  i.e.  _variables_
+ 
+```scala
+val a = 'a'
+a = 'b'
+```
+Result
+```scala
+<console>:12: error: reassignment to val
+```
+
+That fails with a `reassignment to val` error, as expected. Conversely, you can reassign a  `var`:
+
+```scala
+var c = 'c'  
+c = 'd' // This is fine
+```
+Result
+```scala
+c: Char = d
+```
+
+### Which to use?
+The general rule is that you should always use a  `val`  field unless there is a `good` reason not to. 
+- makes your code more like algebra
+- helps get you started down the path to functional programming, where  _all_  fields are immutable.
+
+ 
+
+###  `val`  fields in the REPL
+
+The REPL is not 100% the same as working with source code in an IDE, so you can do a few things in the REPL that you `cannot` do when working on real-world code in a project. 
+
+You can redefine a  `val`  field in the REPL, like this:
+
+```scala
+// It's ok only in REPL
+scala> val age = 18
+age: Int = 18
+
+scala> val age = 19
+age: Int = 19
+
+```
+
+`val`  fields cannot be redefined like that in the real world, but they can be redefined in the REPL playground.
+
+
+## val vs def  vs lazy val
+
+
+### val vs def 
+
+To introduce a definition evaluated only when used, we use the keyword `def.`
+
+`def` introduces a definition where the right-hand side is evaluated on each use.
+
+While the `def`  is a function declaration, it is evaluated on call, i.e. `val`  evaluates when defined,  `def`  - when called:
+
+**Example**:
+```scala
+// Complain immediately
+scala> val even: Int => Boolean = ???
+scala.NotImplementedError: an implementation is missing
+
+// Complain on call
+scala> def even: Int => Boolean = ???
+even: Int => Boolean
+
+scala> even
+scala.NotImplementedError: an implementation is missing
+
+```
+
+### Identity 
+Method  `def even`  evaluates on call and creates **new** function every time (new instance of  `Function1`).
+
+```scala
+def even: Int => Boolean = _ % 2 == 0  
+even eq even  
+//Boolean = false  
+  
+val evenVal: Int => Boolean = _ % 2 == 0  
+evenVal eq evenVal  
+//Boolean = true  
+  
+```
+
+### Function Result 
+
+With  `def`  you can get new function on every call:
+
+```scala
+val randomInt: () => Int = {  
+  val r = util.Random.nextInt  
+  () => r  
+}  
+  
+randomInt() // val res3: Int = 1764655189  
+randomInt() // val res4: Int = 1764655189
+
+// --------------------------------  
+  
+  
+def randomIntDef: () => Int = {  
+  val r = util.Random.nextInt  
+  () => r  
+}  
+  
+// Different  
+randomIntDef()  
+randomIntDef()
+
+```
+
+
+###  lazy val
+
+ `lazy val` is evaluated when called the first time:
+
+```scala
+scala> lazy val even: Int => Boolean = ???
+even: Int => Boolean = <lazy>
+
+scala> even
+scala.NotImplementedError: an implementation is missing
+
+```
+
+But returns the same result (in this case same instance of  `FunctionN`) every time:
+
+#### Identity
+```scala
+lazy val even: Int => Boolean = _ % 2 == 0  
+even eq even  
+//Boolean = true
+```
+
+#### Result
+
+```scala
+  
+lazy val randomInt: () => Int = {  
+  val r = util.Random.nextInt  
+  () => r  
+}  
+  
+randomInt()  
+// Int = -1068569869  
+randomInt()  
+// Int = -1068569869 - same result
+```
+
+### Performance
+
+`val` is evaluated when defined.
+
+`def` is evaluated on every call so that performance could be worse than  `val`  for multiple calls. You will get the same performance with a single call. Furthermore, with no calls, you will get no overhead from  `def`, so you can define it even if you do not use it in some branches.
+
+With a  `lazy val` you will get a lazy evaluation: you can define it even if you do not use it in some branches, and it evaluates once or never, but you will get a little overhead from double-checking locking on every access to your  `lazy val`.
+
+However, if you need a function (not a method) for function composition or higher-order functions (like  `filter(even)`) compiler will generate a function from your method every time you are using it as a function so that performance could be slightly worse than with  `val`.
+
+
+## Conditionals 
+
+ 
+To express choosing between two alternatives, Scala has a conditional expression if-then-else. 
+
+ Example:
+  
+```scala
+def absoluteValue(x: Int) = if (x >= 0) x else -x  
+absoluteValue(1)  // val res0: Int = 1
+absoluteValue(-2) // val res1: Int = 2
+```
+where `x >= 0` is a predicate, of type `Boolean`.
+
+### Boolean Composition 
+
+Boolean expressions b can be composed of 
+```scala
+true false // Constants 
+!b // Negation 
+b && b // Conjunction 
+b || b // Disjunction 
+```
+Example: The usual  operations: 
+```scala
+e <= e
+e == e
+e != e
+```
+
+### Clean Code
+
+```scala
+!true --> false 
+!false --> true 
+true && e --> e 
+false && e --> false 
+true || e --> true 
+false || e --> e 
+```
+Note that && and || do not always need their right operand to be evaluated.
+
+ 
