@@ -1,16 +1,14 @@
-
-
 #  (1) Principles of Functional Programming
 
 ## About  
 
 :octocat: GitHub: All of the example code: [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
 
-:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/  :star:
+:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/   :star:
 
 -------------------------------------------
 
-These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/week/1) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL) (btw that's who created Scala )
+These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala 
 
 -------------------------------------------
 
@@ -96,27 +94,26 @@ class MutableComplexNumber(var real: Int, var imaginary: Int) {
 We can see that when adding two mutable complex numbers, the function will not return a new complex number, and instead, the original complex number (the addend) is changed.
 
 ```scala
-import week1.lecutreExample.MutableComplexNumber
+import lecutreExample.MutableComplexNumber
 
-class MutableComplexNumberTest extends munit.FunSuite {
-  test("when adding two mutable complex numbers," +
-    "will not get a new complex number ," +
-    "and the original numbers will be changed") {
-    val thisMutableComplexNumber = MutableComplexNumber(1, 2)
-    val thatMutableComplexNumber = MutableComplexNumber(3, 4)
-    thisMutableComplexNumber.add(thatMutableComplexNumber)
-
-    assertEquals(thisMutableComplexNumber.real, 4)
-    assertEquals(thisMutableComplexNumber.imaginary, 6)
-  }
-}
+class MutableComplexNumberTest extends munit.FunSuite {  
+  test("when adding two mutable complex numbers," +  
+    "will not get a new complex number ," +  
+    "and the original numbers will be changed") {  
+  val thisMutableComplexNumber = MutableComplexNumber(1, 2)  
+  val thatMutableComplexNumber = MutableComplexNumber(3, 4)  
+  thisMutableComplexNumber.add(thatMutableComplexNumber)  
+  
+  assertEquals(thisMutableComplexNumber.real, 4)  
+  assertEquals(thisMutableComplexNumber.imaginary, 6)  
+ }}
 ```
 
 
 ### Issue of Mutation
 
 #### In Math
-There's no place for the mutation if we implement high-level concepts following their mathematical theories.
+There is no place for mutation if we implement high-level concepts following their mathematical theories.
 - The theories do not admit it. 
 -  Mutation can destroy useful laws in the theories.
 
@@ -132,12 +129,12 @@ The mutation changes an object and is one common side effect in programming lang
 
 ### Definition 
 
-**Restricted** :  A functional programming language is one which does ***not*** have 
+**Restricted** :  A functional programming language  does ***not*** have 
 - mutable variables
 -  assignments, 
 - or imperative control structures. 
 
-**Wider** : a functional programming language focus on functions and immutable data structures.
+**Wider** : a functional programming language focused on functions and immutable data structures.
 
 ### FP Languages
 
@@ -150,7 +147,7 @@ Concepts and constructs from functional languages are also found in many traditi
 
 ### Functions in FP
 
-Functions in a FP language are first-class citizens. This means 
+Functions in an FP language are first-class citizens i.e.  
 -  they can be defined anywhere, including inside other functions
 -  like any other value, they can be passed as parameters to functions and returned as results 
 - as for other values, there exists a set of operators to compose functions
@@ -172,7 +169,7 @@ More philosophical
 - Higher-level abstractions
 
 Morden
--  It’s an effective tool to handle concurrency and parallelism, on every scale
+- It is an effective tool to handle concurrency and parallelism on every scale
 - Our computers are not Van-Neuman machines anymore. They are parallel 
 
 ### Coding Example
@@ -187,34 +184,33 @@ class ImmutableComplexNumber(val real: Int, val imaginary: Int) {
  }}
 ```
 
-We can see that when adding two immutable complex numbers, the function will return a new complex number, and the original complex numbers (addends) won't change.
+We can see that when adding two immutable complex numbers, the function will return a new complex number, and the original complex numbers (addends) will not change.
 
 ```scala
-
-import week1.lecutreExample.ImmutableComplexNumber
-
-class ImmutableComplexNumberTest extends munit.FunSuite {
-  test("when adding two immutable complex number," +
-    "will get a new complex number ," +
-    "and the original numbers won't change") {
-    val thisImmutableComplexNumber = ImmutableComplexNumber(1, 2)
-    val thatImmutableComplexNumber = ImmutableComplexNumber(3, 4)
-    val newImmutableComplexNumber = thisImmutableComplexNumber.add(thatImmutableComplexNumber)
-    assertEquals(newImmutableComplexNumber.real, 4)
-    assertEquals(newImmutableComplexNumber.imaginary, 6)
-    assertEquals(thisImmutableComplexNumber.real, 1)
-    assertEquals(thisImmutableComplexNumber.imaginary, 2)
-    assertEquals(thatImmutableComplexNumber.real, 3)
-    assertEquals(thatImmutableComplexNumber.imaginary, 4)
-  }
-}
+  
+import lecutreExample.ImmutableComplexNumber  
+  
+class ImmutableComplexNumberTest extends munit.FunSuite {  
+  test("when adding two immutable complex number," +  
+    "will get a new complex number ," +  
+    "and the original numbers won't change") {  
+  val thisImmutableComplexNumber = ImmutableComplexNumber(1, 2)  
+  val thatImmutableComplexNumber = ImmutableComplexNumber(3, 4)  
+  val newImmutableComplexNumber = thisImmutableComplexNumber.add(thatImmutableComplexNumber)  
+  assertEquals(newImmutableComplexNumber.real, 4)  
+  assertEquals(newImmutableComplexNumber.imaginary, 6)  
+  assertEquals(thisImmutableComplexNumber.real, 1)  
+  assertEquals(thisImmutableComplexNumber.imaginary, 2)  
+  assertEquals(thatImmutableComplexNumber.real, 3)  
+  assertEquals(thatImmutableComplexNumber.imaginary, 4)  
+ }}
 ```
 
 ## Tool: REPL
 
-Functional programming is a bit like using a calculator 
+Functional programming is a bit like using a calculator. 
 
-An interactive shell (or [REPL, for Read-Eval-Print-Loop](https://docs.scala-lang.org/overviews/scala-book/scala-repl.html)) lets one write expressions and responds with their value.  Alternatively, you can use scala worksheet
+An interactive shell (or [REPL, for Read-Eval-Print-Loop](https://docs.scala-lang.org/overviews/scala-book/scala-repl.html)) lets one write expressions and responds with their value.  Alternatively, you can use a scala worksheet.
 
 
 
@@ -251,10 +247,10 @@ res1: Int = 10
 Every non-trivial programming language provides: 
 - primitive* expressions representing the simplest elements  
 -  ways to combine expressions 
--  ways to abstract expressions, which introduce a name for an expression by which it can then be referred to.
+-  ways to abstract expressions, which introduce a name for an expression that can then be referred to.
 
 ### Primitive 
-In Scala, Primitive types are as in Java, but are written capitalized: 
+In Scala, Primitive types are similar to Java but are written capitalized: 
 
 $$
 \begin{array}{ll}
@@ -277,8 +273,8 @@ A non-primitive expression is evaluated as follows.
 2.  Evaluate its operands (left before right) 
 3.  Apply the operator to the operands 
 
-A name is evaluated by replacing it with the right hand side of its definition 
-The evaluation process stops once it results in a value
+A name is evaluated by replacing it with the right-hand side of its definition. 
+The evaluation process stops once it results in a value.
 
 
 #### Example： Circumference
@@ -325,7 +321,7 @@ val res2: Double = 256.0
 
 ```
 
-Function parameters come with their type,   which is given after a colon  
+Function parameters come with their type,   which is given after a colon.  
 
 ```scala
 def sumOfSquares(x: Double, y: Double) = square(x) + square(y)  
@@ -333,16 +329,16 @@ def sumOfSquares(x: Double, y: Double) = square(x) + square(y)
 
 
 
-Applications of parameterized functions are evaluated in a similar way as operators: 
+Applications of parameterized functions are evaluated similarly as operators: 
 1. Evaluate all function arguments, from left to right 
 2.  Replace the function application by the function’s right-hand side, and, at the same time 
-3.  Replace the formal parameters of the function by the actual arguments
+3.  Replace the formal parameters of the function with the actual arguments
 
 ```scala
 sumOfSquares(3, 2+2)
 ```
 
-it's actually converted to 
+it is converted to 
 
 ```scala
 -> sumOfSquares(3, 4) 
@@ -374,14 +370,14 @@ def loop: Int = loop loop
 ### Substitution Model
 This scheme of expression evaluation is called the substitution model, where
 - all evaluation does is reduce an expression to a value. 
-- It can be applied to all expressions, as long as they have no side effects (like storing files, printing, reading).
+- It can be applied to all expressions, as long as they have no side effects (storing files, printing, reading etc.).
 - The substitution model is formalized in the `λ-calculus`, which gives a foundation for functional programming.
 
 ### Functional Contract
 
 - A method with a  **functional contract**  will always return the same value to the same arguments.
 - Have no other side effects (like storing files, printing, reading). 
-- Thus, even if you mutate temporary values inside your function, it's still pure from the outside. 
+- Thus, even if you mutate temporary values inside your function, it is still pure from the outside. 
 
 
 
@@ -407,7 +403,7 @@ square(3) + square(2+2)
 ### Call-by-Name 
 
 Apply the function to unreduced arguments.  
-We  prepend  _**=>**_  (rocket symbol) to its type.
+We prepend  _**=>**_  (rocket symbol) to its type.
  
 ```scala
 def callByNameFunc(input: => InputType)  
@@ -424,16 +420,16 @@ square(3) + square(4)
 9 + 4 * 4 
 9 + 16 
 25
- ```
+```
  
- ### Result Compare 
+### Result Comparison
 Both strategies reduce to the same final values as long as
 - the reduced expression consists of pure functions, and
 - both evaluations terminate.
 
-### Performance 
+### Performance Comparison
 
-Say we have a function that takes 2 inputs , and  returns the square of the first input 
+Say we have a function that takes two inputs and  returns the square of the first input 
 i.e. the 2nd input is not used
 
 ```scala
@@ -448,9 +444,9 @@ squareOfFirstElement(7, 2*4)
 squareOfFirstElement(3+4, 2*4)  
 ```
 
-We want to examine the evaluation strategy and determine which one is faster (less steps) in these conditions:
+We want to examine the evaluation strategy and determine which one is faster (fewer steps) in these conditions:
 
-#### Senario 1 
+#### Scenario 1 
 
 ```scala
 squareOfFirstElement(2,3)
@@ -524,7 +520,7 @@ call by name:
 ↓ 
 49  
 ```
-Here call by name is faster
+Here call by name is faster.
 
 #### Senario 4
 
@@ -557,7 +553,7 @@ call by name:
 The result is reached within the same steps.
 
 
-### Advantage
+### Advantage Comparison
 Call-by-value 
 -  it evaluates every function argument only once
 - avoids the repeated re-computation of argument expressions
@@ -566,16 +562,16 @@ Call-by-name
 - a function argument is not evaluated if the corresponding parameter is unused in the evaluation of the function body. 
 
 
-### Termination
+### Termination Comparison
 
-Call-by-name and call-by-value evaluation strategies reduce an expression to the same value, as long as both evaluations terminate. 
+Call-by-name and call-by-value evaluation strategies reduce an expression to the same value as long as both evaluations terminate. 
 
 ```
 Q: But what if termination is not guaranteed?
 ```
 
 If CBV evaluation of an expression `#e` terminates, then CBN evaluation of `#e` terminates, too. 
-The other direction is not true
+The other direction is not true.
 
 | Terminates? | CallByName | CallByValue | Possible? |
 |-------------|------------|-------------|-----------|
@@ -586,7 +582,7 @@ The other direction is not true
 
 #### Example
 
-Find an expression that terminates under CBN but not under CBV
+Find an expression that terminates under CBN but not under CBV.
 
 ```scala
 def firstByValue(x: Int, y: Int) = x  
@@ -609,6 +605,299 @@ firstByValue(1, loop)
 ```
 
 
+# (2) Scala Basics 
+
+## About  
+
+:octocat: GitHub: All of the example code: [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
+
+:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/   :star:
+
+-------------------------------------------
+
+These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala 
+
+-------------------------------------------
+
+This blog helps you 
+
+1. Start running Scala on your computer.
+2. Understand `val` vs `var` vs `def` vs method 
+3. Understand  the Scala condition blocks  
+
+-------------------------------------------
+
+## Getting Started
+
+- Get up and running with Scala on your computer: [link](https://www.coursera.org/learn/scala-functional-programming/supplement/BNOBK/tools-setup-please-read)
+- Useful links for learning scala: [link](https://www.coursera.org/learn/scala-functional-programming/supplement/D9pm0/learning-resources)
+
+## Functions and Methods
+
+### Functions
+A function 
+- is a collection of statements that perform a certain task. 
+- is used to put some common and repetitive tasks into a single function, so we can call the function instead of writing the same code again and again for different inputs. 
+- Scala is assumed as a functional programming language, so these play an important role. It makes it easier to debug and modify the code. Scala functions are  **first-class values**.
+
+### Functions vs Methods
+
+Function -  an object which can be stored in a variable. 
+Method - always belongs to a class with a name signature bytecode. 
+
+etc. You can say a method is a function that is a member of some object.
+
+## var vs val 
+
+In Java you declare new variables like this:
+
+```java
+String s = "hello";
+int i = 42;
+Person p = new Person("Victoria Pinzhen Liao");
+
+```
+
+Each variable declaration is preceded by its type.
 
 
+Scala has two types of variables:
 
+-   `val`  creates an  _immutable_  variable (like  `final`  in Java, or `constants` in other languages)
+-   `var`  creates a  _mutable_  variable
+
+This is what variable declaration looks like in Scala:
+
+```scala
+//  variable’s type is  _inferred_  by the compiler 
+val s = "hello"   // immutable
+var i = 42        // mutable
+
+class Person(name: String)
+val p = new Person("Victoria Pinzhen Liao")
+```
+
+Those examples show that the Scala compiler is usually **smart enough** to infer the variable’s data type from the code on the right side of the  `=`  sign. We say that the variable’s type is  _inferred_  by the compiler. 
+
+You can also  _explicitly_  declare the variable type if you prefer:
+
+```scala
+//  _explicitly_  declare the variable type 
+val s: String = "hello"
+var i: Int = 42
+```
+
+### Evaluation time 
+
+`val` and `var` are evaluated when defined.
+
+###  `val`  vs `var`
+
+`val`  makes a variable  _immutable_  — like  `final`  in Java, i.e.  _values_ 
+`var`  makes a variable  _mutable_.  i.e.  _variables_
+ 
+```scala
+val a = 'a'
+a = 'b'
+```
+Result
+```scala
+<console>:12: error: reassignment to val
+```
+
+That fails with a `reassignment to val` error, as expected. Conversely, you can reassign a  `var`:
+
+```scala
+var c = 'c'  
+c = 'd' // This is fine
+```
+Result
+```scala
+c: Char = d
+```
+
+### Which to use?
+The general rule is that you should always use a  `val`  field unless there is a `good` reason not to. 
+- makes your code more like algebra
+- helps get you started down the path to functional programming, where  _all_  fields are immutable.
+
+ 
+
+###  `val`  fields in the REPL
+
+The REPL is not 100% the same as working with source code in an IDE, so you can do a few things in the REPL that you `cannot` do when working on real-world code in a project. 
+
+You can redefine a  `val`  field in the REPL, like this:
+
+```scala
+// It's ok only in REPL
+scala> val age = 18
+age: Int = 18
+
+scala> val age = 19
+age: Int = 19
+
+```
+
+`val`  fields cannot be redefined like that in the real world, but they can be redefined in the REPL playground.
+
+
+## val vs def  vs lazy val
+
+
+### val vs def 
+
+To introduce a definition evaluated only when used, we use the keyword `def.`
+
+`def` introduces a definition where the right-hand side is evaluated on each use.
+
+While the `def`  is a function declaration, it is evaluated on call, i.e. `val`  evaluates when defined,  `def`  - when called:
+
+**Example**:
+```scala
+// Complain immediately
+scala> val even: Int => Boolean = ???
+scala.NotImplementedError: an implementation is missing
+
+// Complain on call
+scala> def even: Int => Boolean = ???
+even: Int => Boolean
+
+scala> even
+scala.NotImplementedError: an implementation is missing
+
+```
+
+### Identity 
+Method  `def even`  evaluates on call and creates **new** function every time (new instance of  `Function1`).
+
+```scala
+def even: Int => Boolean = _ % 2 == 0  
+even eq even  
+//Boolean = false  
+  
+val evenVal: Int => Boolean = _ % 2 == 0  
+evenVal eq evenVal  
+//Boolean = true  
+  
+```
+
+### Function Result 
+
+With  `def`  you can get new function on every call:
+
+```scala
+val randomInt: () => Int = {  
+  val r = util.Random.nextInt  
+  () => r  
+}  
+  
+randomInt() // val res3: Int = 1764655189  
+randomInt() // val res4: Int = 1764655189
+
+// --------------------------------  
+  
+  
+def randomIntDef: () => Int = {  
+  val r = util.Random.nextInt  
+  () => r  
+}  
+  
+// Different  
+randomIntDef()  
+randomIntDef()
+
+```
+
+
+###  lazy val
+
+ `lazy val` is evaluated when called the first time:
+
+```scala
+scala> lazy val even: Int => Boolean = ???
+even: Int => Boolean = <lazy>
+
+scala> even
+scala.NotImplementedError: an implementation is missing
+
+```
+
+But returns the same result (in this case same instance of  `FunctionN`) every time:
+
+#### Identity
+```scala
+lazy val even: Int => Boolean = _ % 2 == 0  
+even eq even  
+//Boolean = true
+```
+
+#### Result
+
+```scala
+  
+lazy val randomInt: () => Int = {  
+  val r = util.Random.nextInt  
+  () => r  
+}  
+  
+randomInt()  
+// Int = -1068569869  
+randomInt()  
+// Int = -1068569869 - same result
+```
+
+### Performance
+
+`val` is evaluated when defined.
+
+`def` is evaluated on every call so that performance could be worse than  `val`  for multiple calls. You will get the same performance with a single call. Furthermore, with no calls, you will get no overhead from  `def`, so you can define it even if you do not use it in some branches.
+
+With a  `lazy val` you will get a lazy evaluation: you can define it even if you do not use it in some branches, and it evaluates once or never, but you will get a little overhead from double-checking locking on every access to your  `lazy val`.
+
+However, if you need a function (not a method) for function composition or higher-order functions (like  `filter(even)`) compiler will generate a function from your method every time you are using it as a function so that performance could be slightly worse than with  `val`.
+
+
+## Conditionals 
+
+ 
+To express choosing between two alternatives, Scala has a conditional expression if-then-else. 
+
+ Example:
+  
+```scala
+def absoluteValue(x: Int) = if (x >= 0) x else -x  
+absoluteValue(1)  // val res0: Int = 1
+absoluteValue(-2) // val res1: Int = 2
+```
+where `x >= 0` is a predicate, of type `Boolean`.
+
+### Boolean Composition 
+
+Boolean expressions b can be composed of 
+```scala
+true false // Constants 
+!b // Negation 
+b && b // Conjunction 
+b || b // Disjunction 
+```
+Example: The usual  operations: 
+```scala
+e <= e
+e == e
+e != e
+```
+
+### Clean Code
+
+```scala
+!true --> false 
+!false --> true 
+true && e --> e 
+false && e --> false 
+true || e --> true 
+false || e --> e 
+```
+Note that && and || do not always need their right operand to be evaluated.
+
+ 
