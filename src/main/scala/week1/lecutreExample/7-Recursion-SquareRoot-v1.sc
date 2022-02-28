@@ -1,8 +1,11 @@
 import math.{abs, sqrt, pow}
 
+// define what is "Good enough"
+val accuracy = 0.001
+
 // define a test to check for terminatation:
 def isGoodEnough(guessedSquareRoot: Double, squareNum: Double) =
-  abs(guessedSquareRoot * guessedSquareRoot - squareNum) < 0.001
+  abs(guessedSquareRoot * guessedSquareRoot - squareNum) < accuracy
 
 // define a function improve to improve an estimate
 def improve(guessedSquareRoot: Double, squareNum: Double) =
