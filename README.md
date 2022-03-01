@@ -26,7 +26,7 @@ This blog answers
 **Paradigm** - In science, a paradigm describes distinct concepts or thought patterns in some scientific discipline.
 
 
-
+Image source: https://javascript.plainenglish.io/what-are-javascript-programming-paradigms-3ef0f576dfdb
 
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655330430.png)
 
@@ -37,6 +37,8 @@ This blog answers
 - using control structures such as if-then-else, loops, break, continue, return.
 
 Example:  instruction sequences for a Von Neumann computer.
+
+image source: https://diu-eil.gricad-pages.univ-grenoble-alpes.fr/archi-robotique-systeme-reseau/systeme/syst_2_processus.pdf
 
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655317849.png)
 
@@ -65,14 +67,17 @@ A theory consists of
 -
 Typically, a theory does **not** describe mutations.
 
+image source: https://dandelife.com/what-are-the-things-you-should-know-about-complex-numbers/
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645741123766.png)
 
 For instance, the theory of complex number defines the sum of two complex numbers by laws such as:
 
+image source: https://numberworksheet.info/complex-number-multiplication-worksheet/
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645741136587.png)
 
 where complex numbers are addends
 
+image source: https://www.greenemath.com/Prealgebra/5/PropertiesofAdditionLesson.html
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645741145282.png)
 
 #### Coding Example
@@ -603,7 +608,6 @@ firstByValue(1, loop)
 // Never end
 ```
 
-
 # (2) Scala Basics
 
 ## About
@@ -905,6 +909,7 @@ Note that && and || do not always need their right operand to be evaluated.
 Recursion is the process of defining a problem (or the solution to a problem) in terms of (a simpler version of) itself.
 For example, we can define the operation "find your way home" as Stop moving if you are at home.
 
+image source: https://stackoverflow.com/questions/13242050/java-recursion-triangle-with-deviation
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646007793273.png)
 
 ## Recursion Function
@@ -928,7 +933,7 @@ To compute sqrt(x):
 - Start with an initial estimate y (let’s pick `y = 1`).
 -  Repeatedly improve the estimate by taking the mean of y and x/y.
 
-
+image source: https://blogs.sas.com/content/iml/2016/05/18/newtons-method-babylonian-square-root.html
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646007812068.png)
 
 ### Example: x = 2
@@ -941,7 +946,7 @@ To compute sqrt(x):
 | 1.4167             | 2 / 1.4167=1.4118  | 1.4142         |
 | 1.4142             | ...            | ...      |
 
-
+image source: https://demonstrations.wolfram.com/FindingATangentLineToAParabola/
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646007910843.png)
 
 ## Implementation in Scala (v1)
@@ -1034,6 +1039,20 @@ But the names of functions like `sqrtIter, improve, and isGoodEnough` matter onl
 
 Normally we would not like users to access these functions directly. We can achieve this and at the same time avoid “name-space pollution” by putting the auxiliary functions inside sqrt.
 
+WIP
+
+![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655296547.png)
+
+## Reference
+- (2022). Retrieved 23 February 2022, from https://www.coursera.org/learn/scala-functional-programming/lecture/EQ7BX/lecture-1-1-programming-paradigms
+-  Washing your code: avoid mutation. (2022). Retrieved 23 February 2022, from https://blog.sapegin.me/all/avoid-mutation/#:~:text=Mutation%20may%20lead%20to%20unexpected,careful%20when%20reading%20the%20code.
+-   paul, j. (2022). Difference between var, val, and def in Scala? Examples. Retrieved 26 February 2022, from https://www.java67.com/2017/05/difference-between-var-val-and-def-in-Scala.html#:~:text=That's%20all%20about%20the%20difference,can%20be%20modified%20or%20reassigned.
+-  Dr. Derek Austin 🥳 – Medium. (2022). Retrieved 26 February 2022, from https://doctorderek.medium.com/
+-  Two Types of Variables. (2022). Retrieved 27 February 2022, from https://docs.scala-lang.org/overviews/scala-book/two-types-variables.html#:~:text=The%20difference%20between%20val%20and%20var%20is%20that%20val%20makes,as%20values%20rather%20than%20variables.
+-  Scala: The Differences Between `val` and `def` When Creating Functions | alvinalexander.com. (2022). Retrieved 27 February 2022, from https://alvinalexander.com/scala/fp-book-diffs-val-def-scala-functions/
+- Scala | Functions - Basics - GeeksforGeeks. (2018). Retrieved 27 February 2022, from https://www.geeksforgeeks.org/scala-functions-basics/#:~:text=Scala%20functions%20are%20first%20class,a%20member%20of%20some%20object.
+
+##
 WIP
 
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655296547.png)
