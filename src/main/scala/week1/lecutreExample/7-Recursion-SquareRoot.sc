@@ -22,6 +22,30 @@ def squareRoot(squareNum: Double) = {
   squareRootIterator(1.0)
 }
 
+// -------------------------
+
+// Not bad
 squareRoot(4)
 // val res0: Double = 2.0000000929222947
 
+// -------------------------
+
+// Bad example
+squareRoot(0.001)
+// val res2: Double = 0.04124542607499115
+
+// Correct answer
+sqrt(0.001)
+// val res3: Double = 0.03162277660168379
+
+// -------------------------
+
+val largeNumber: Double = pow(10, 50)
+
+// Correct answer
+sqrt(largeNumber)
+// val res4: Double = 1.0E25
+
+// Bad example
+squareRoot(largeNumber)
+// Never terminate

@@ -44,6 +44,7 @@ object Recursion {
           (1))
         }
       }
+
     }
 
     val isBalanced = balanceRec(chars)
@@ -55,6 +56,7 @@ object Recursion {
   /**
    * Exercise 3
    */
+
   def countChange(money: Int, coins: List[Int]): Int = {
     if (money < 0 || coins.isEmpty) 0
     else if (money == 0) 1
@@ -64,4 +66,5 @@ object Recursion {
       withFirstCoin + withoutFirstCoin
     }
   }
+
 }

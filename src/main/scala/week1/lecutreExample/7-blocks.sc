@@ -12,7 +12,7 @@ if (y != 1) {
 
 //-----------------
 
-// Rule 1/2 -
+// Rule 1/3 -
 // The definitions inside a block are only visible from within the block
 
 def plusOne(z: Int) = {
@@ -21,7 +21,7 @@ def plusOne(z: Int) = {
 
 z // Not found: z
 
-// Rule 2/2 -
+// Rule 2/3 -
 // The definitions inside a block shadow definitions of the same names outside the block.
 
 val x = 0
@@ -32,4 +32,12 @@ def plusFour(y: Int) = {
 
 plusFour(3) // val res1: Int = 7
 
- 
+// Rule 3/3 - Lexical Scoping: Definitions of outer blocks are **visible**
+// inside a block unless they are shadowed.
+
+val a = 2
+def plusThree(b: Int) = {
+  a + b + 1 // a = 3
+}
+
+plusThree(1) //
