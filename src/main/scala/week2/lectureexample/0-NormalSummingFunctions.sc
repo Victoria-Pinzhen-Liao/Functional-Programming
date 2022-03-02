@@ -15,3 +15,7 @@ def factorial(n: Int): Int =
 def sumFactorials(a: Int, b: Int): Int =
   if a > b then 0 else factorial(a) + sumFactorials(a + 1, b)
 
+
+sumInts(1, 2) // val res0: Int = 3
+sumCubes(1, 2) // val res1: Int = 9
+sumFactorials(1, 2) // val res2: Int = 3
