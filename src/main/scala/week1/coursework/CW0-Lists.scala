@@ -20,8 +20,7 @@ object Lists:
    * solution.
    *
    * @param xs A list of natural numbers
-   * @return The sum of all elements in `xs`
-   */
+   * @return The sum of all elements in `xs` */
   def sum(xs: List[Int]): Int = {
     if (xs.isEmpty) 0 else {
       var sum = 0
@@ -43,8 +42,7 @@ object Lists:
    *
    * @param xs A list of natural numbers
    * @return The largest element in `xs`
-   * @throws java.util.NoSuchElementException if `xs` is an empty list
-   */
+   * @throws java.util.NoSuchElementException if `xs` is an empty list */
   def max(xs: List[Int]): Int = {
     if (xs.isEmpty) {
       throw new NoSuchElementException

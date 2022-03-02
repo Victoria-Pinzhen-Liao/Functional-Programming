@@ -1,7 +1,6 @@
-package coursework
+package week1.coursework
 
-import coursework.Recursion.*
-
+import week1.coursework.Recursion._
 class RecFunSuite extends munit.FunSuite :
 
 

@@ -1,4 +1,4 @@
-package coursework
+package week1.coursework
 
 import scala.annotation.tailrec
 import scala.collection.mutable.Stack

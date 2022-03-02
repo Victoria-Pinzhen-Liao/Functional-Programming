@@ -1,4 +1,4 @@
-package coursework
+package week1.coursework
 
 /**
  * This class implements a munit test suite for the methods in object

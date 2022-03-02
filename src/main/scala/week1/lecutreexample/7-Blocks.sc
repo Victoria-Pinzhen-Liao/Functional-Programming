@@ -19,7 +19,8 @@ def plusOne(z: Int) = {
   z + 1
 }
 
-z // Not found: z
+// If we try to check z here
+// z // Not found: z
 
 // Rule 2/3 -
 // The definitions inside a block shadow definitions of the same names outside the block.

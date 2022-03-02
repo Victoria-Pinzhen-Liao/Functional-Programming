@@ -1,4 +1,4 @@
-package week1.lecutreExample
+package week1.lecutreexample
 
 object CallByNameVsCallByValue extends App {
 
