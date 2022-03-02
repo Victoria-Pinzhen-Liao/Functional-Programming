@@ -903,8 +903,24 @@ false || e --> e
 ```
 Note that && and || do not always need their right operand to be evaluated.
 
-
 # (3) Recursion
+
+## About
+
+:octocat: GitHub: All of the example code: [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
+
+:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/   :star:
+
+-------------------------------------------
+
+This blog helps you understand
+1. Recursion
+2. Blocks and Lexical Scope
+3. Tail Recursion
+4. Go through coursework solutions
+
+-------------------------------------------
+
 ## Background
 Recursion is the process of defining a problem (or the solution to a problem) in terms of (a simpler version of) itself.
 For example, we can define the operation "find your way home" as Stop moving if you are at home.
@@ -954,7 +970,7 @@ image source: https://demonstrations.wolfram.com/FindingATangentLineToAParabola/
 1. define a test to check for termination
 2. define a function improve to improve an estimate
 3. define a function that computes one iteration step
-    -  Note that `squareRootIterator` is recursive; its right-hand side calls itself.
+   -  Note that `squareRootIterator` is recursive; its right-hand side calls itself.
 4. define the sqrt function
 
 ```scala
@@ -1031,28 +1047,387 @@ squareRoot(largeNumber)
 
 The code style can be improved.
 
-###   Clean Code (v2)
+##  Blocks and Lexical Scope
+
+### Blocks
+
+A block is delimited by braces `{ ... }`.
+
+A block
+- contains a sequence of definitions or expressions.
+- may appear everywhere an expression can.
+
+Example block
+```scala
+{ val x = 3
+x * x  // the return of the block 
+}
+```
+
+Result
+```scala
+val x: Int = 3
+val res0: Int = 9
+```
+####  Block return
+- the last element of a block is an expression that defines its value
+   - (The `x * x` in this block ).
+- This return expression can be preceded by auxiliary definitions.
+
+### Braces
+
+From Scala 3, braces are optional (i.e. implied) around a correctly indented expression that appears after `=, then, else, …`
+
+Scala 2
+```scala 
+val y = 3  
+if (y != 1) {  
+  println ("y is 1")  
+}
+```
+
+Scala 3
+```scala 
+val y = 3  
+if y != 1 {  
+  println ("y is not 1")  
+}
+```
+
+### Visibility -  3 Rules
+
+Rule 1/3 - The definitions inside a block are only visible from within the block
+
+```scala
+def plusOne(z: Int) = {  
+  z + 1  
+}  
+  
+z // Error: Not found: z
+```
+
+Rule 2/3 - The definitions inside a block shadow definitions of the same names outside the block.
+
+```scala
+val x = 0  
+def plusFour(y: Int) = {  
+  val x = 3  
+  y + x + 1 // x = 3  
+}  
+  
+plusFour(3) // val res1: Int = 7
+ 
+```
+
+Rule 3/3 Lexical Scoping: Definitions of outer blocks are **visible** inside a block unless they are shadowed.
+
+
+
+
+### #squareRoot Cleaner Code  (v2)
+
+1. Limit visibility of some internal functions
 
 It’s a good functional programming style to split a task into many small functions.
 
 But the names of functions like `sqrtIter, improve, and isGoodEnough` matter only for the implementation of `sqrt`, not for its usage.
 
-Normally we would not like users to access these functions directly. We can achieve this and at the same time avoid “name-space pollution” by putting the auxiliary functions inside sqrt.
+Normally we would not like users to access these functions directly.
 
-WIP
+We can achieve this and at the same time avoid “name-space pollution” by putting the auxiliary functions inside sqrt.
 
-![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655296547.png)
+```scala
+import math.{abs, sqrt, pow}  
+  
+// define the sqrt function:  
+def squareRoot(squareNum: Double) = {  
+  // define what is "Good enough"  
+  val accuracy = 0.001  
+  
+  // define a test to check for terminatation:  
+  def isGoodEnough(guessedSquareRoot: Double, squareNum: Double) =  
+    abs(guessedSquareRoot * guessedSquareRoot - squareNum) < accuracy  
+  
+  // define a function improve to improve an estimate  
+  def improve(guessedSquareRoot: Double, squareNum: Double) =  
+    (guessedSquareRoot + squareNum / guessedSquareRoot) / 2  
+  
+  // define a function which computes one iteration step  
+ // Note that `squareRootIterator` is recursive, its right-hand side calls itself.  def squareRootIterator(guessedSquareRoot: Double, squareNum: Double): Double =  
+    if (isGoodEnough(guessedSquareRoot, squareNum)) guessedSquareRoot  
+    else squareRootIterator(improve(guessedSquareRoot, squareNum), squareNum)  
+  
+  squareRootIterator(1.0, squareNum)  
+}  
+  
+squareRoot(4)  
+// val res0: Double = 2.0000000929222947
+```
 
-## Reference
-- (2022). Retrieved 23 February 2022, from https://www.coursera.org/learn/scala-functional-programming/lecture/EQ7BX/lecture-1-1-programming-paradigms
--  Washing your code: avoid mutation. (2022). Retrieved 23 February 2022, from https://blog.sapegin.me/all/avoid-mutation/#:~:text=Mutation%20may%20lead%20to%20unexpected,careful%20when%20reading%20the%20code.
--   paul, j. (2022). Difference between var, val, and def in Scala? Examples. Retrieved 26 February 2022, from https://www.java67.com/2017/05/difference-between-var-val-and-def-in-Scala.html#:~:text=That's%20all%20about%20the%20difference,can%20be%20modified%20or%20reassigned.
--  Dr. Derek Austin 🥳 – Medium. (2022). Retrieved 26 February 2022, from https://doctorderek.medium.com/
--  Two Types of Variables. (2022). Retrieved 27 February 2022, from https://docs.scala-lang.org/overviews/scala-book/two-types-variables.html#:~:text=The%20difference%20between%20val%20and%20var%20is%20that%20val%20makes,as%20values%20rather%20than%20variables.
--  Scala: The Differences Between `val` and `def` When Creating Functions | alvinalexander.com. (2022). Retrieved 27 February 2022, from https://alvinalexander.com/scala/fp-book-diffs-val-def-scala-functions/
-- Scala | Functions - Basics - GeeksforGeeks. (2018). Retrieved 27 February 2022, from https://www.geeksforgeeks.org/scala-functions-basics/#:~:text=Scala%20functions%20are%20first%20class,a%20member%20of%20some%20object.
+### Cleaner Code (v3)
 
-##
-WIP
+According to Rule 3/3 - Definitions of outer blocks are **visible** inside a block unless they are shadowed.
 
-![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655296547.png)
+
+Therefore, we can simplify sqrt by eliminating redundant occurrences of the input parameter `squareNum`, which means everywhere the same thing.
+
+
+```scala
+import scala.math.{abs, pow, sqrt}  
+  
+// define the sqrt function:  
+def squareRoot(squareNum: Double) = {  
+  // define what is "Good enough"  
+  val accuracy = 0.001  
+  
+  // define a test to check for terminatation:  
+  def isGoodEnough(guessedSquareRoot: Double) =  
+    abs(guessedSquareRoot * guessedSquareRoot - squareNum) < accuracy  
+  
+  // define a function improve to improve an estimate  
+  def improve(guessedSquareRoot: Double) =  
+    (guessedSquareRoot + squareNum / guessedSquareRoot) / 2  
+  
+  // define a function which computes one iteration step  
+ // Note that `squareRootIterator` is recursive, its right-hand side calls itself.  def squareRootIterator(guessedSquareRoot: Double): Double =  
+    if (isGoodEnough(guessedSquareRoot)) guessedSquareRoot  
+    else squareRootIterator(improve(guessedSquareRoot))  
+  
+  squareRootIterator(1.0)  
+}  
+  
+squareRoot(4)  
+// val res0: Double = 2.0000000929222947
+```
+
+#### squareRoot version 2 vs. squareRoot version 3
+
+![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646169371080.png)
+
+## Tail Recursion
+
+### Function that calls itself as its last action
+
+Impl of the function that computes the greatest common divisor of two numbers using Euclid’s algorithm:
+
+Please note: ***it calls itself as its last action***
+
+ ```scala
+// Euclid’s algorithm  
+// Greatest Common Divisor
+def gcd(a: Int, b: Int): Int = {  
+  if b == 0 then a else gcd(b, a % b)  
+}  
+  
+gcd(14, 21)// val res0: Int = 7  
+  
+//→ if 21 == 0 then 14 else gcd(21, 14 % 21)  
+//→ if false then 14 else gcd(21, 14 % 21)  
+//  → gcd(21, 14 % 21)  
+//  → gcd(21, 14)  
+//→ if 14 == 0 then 21 else gcd(14, 21 % 14)  
+//  →→ gcd(14, 7)  
+//  →→ gcd(7, 0)  
+//→ if 0 == 0 then 7 else gcd(0, 7 % 0)  
+//  → 7
+```
+
+### Function that does NOT call itself as its last action
+
+
+Consider factorial:
+```scala
+def factorial(n: Int): Int =  
+  if n == 0 then 1 else n * factorial(n - 1)  
+  
+factorial(4) // val res1: Int = 24  
+  
+//→ if 4 == 0 then 1 else 4 * factorial(4 - 1) 3-> →→ 4 * factorial(3)  
+//  →→ 4 * (3 * factorial(2))  
+//  →→ 4 * (3 * (2 * factorial(1)))  
+//  →→ 4 * (3 * (2 * (1 * factorial(0)))  
+//  →→ 4 * (3 * (2 * (1 * 1)))  
+//  →→ 24
+```
+
+### Tail Recursion
+
+If a function **calls itself as its last action**, like the reatest common divisor, the function’s stack frame can be **reused** with  tail recursion.
+
+i.e. Tail recursive functions are **iterative** processes.
+
+To add tail recursive optimization in Scala, we need to add annotation `@tailrec`
+
+```scala
+import scala.annotation.tailrec  
+@tailrec def gcd(a: Int, b: Int): Int = {  
+  if b == 0 then a else gcd(b, a % b)  
+}
+```
+
+If we try to add `tailrec` to `factorial`, we will get error
+```scala
+@tailrec \\ ERROR: Cannot rewrite recursive call: it is not in tail position  
+def factorial(n: Int): Int =  
+  if n == 0 then 1 else n * factorial(n - 1)
+```
+
+###  Change factorial  to @tailrec
+
+```scala
+@tailrec def factorialTailRec(n: Int, lastFactorial: Int): Int =  
+  if n == 0 then lastFactorial else factorialTailRec(n - 1, n * lastFactorial)  
+
+factorialTailRec(4, 1) // val res1: Int = 24
+```
+
+### Summary
+
+A tail recursive function
+- represents an iterative process
+- can be optimized by reusing the stack frame
+- can be annotated with @tailrec so that the compiler will succeed only if it can verify that the function is indeed tail recursive
+- calls itself as its last action
+
+## W1 Coursework
+
+### Exercise 1: Pascal's Triangle
+
+The following pattern of numbers is called _Pascal's triangle_.
+
+```scala
+1  
+1 1  
+1 2 1  
+1 3 3 1  
+1 4 6 4 1  
+...
+```
+
+The numbers at the edge of the triangle are all 1, and each number inside the triangle is the sum of the two numbers above it. Write a function that computes the elements of Pascal's triangle by means of a recursive process.
+
+Do this exercise by implementing the pascal function, which takes a column c and a row r, counting from 0 and returns the number at that spot in the triangle. For example, `pascal(0,2)=1, pascal(1,2)=2 and pascal(1,3)=3.`
+
+```scala
+def pascal(col: Int, row: Int): Int = {  
+  if (col == 0 && row == 0) 1 else if (col < 0 | row < 0) 0  
+  else pascal(col - 1, row - 1) + pascal(col, row - 1)  
+}
+```
+
+Testing
+
+```scala
+def main(args: Array[String]): Unit =  
+  println("Pascal's Triangle")  
+  for row <- 0 to 10 do  
+ for col <- 0 to row do  
+  print(s"${pascal(col, row)} ")  
+    println()
+```
+
+Result
+```scala
+1 
+1 1 
+1 2 1 
+1 3 3 1 
+1 4 6 4 1 
+1 5 10 10 5 1 
+1 6 15 20 15 6 1 
+1 7 21 35 35 21 7 1 
+```
+
+
+### Exercise 2: Parentheses Balancing
+
+Write a recursive function which verifies the balancing of parentheses in a string, which we represent as a List[Char] not a String. For example, the function should return true for the following strings:
+
+-   (if (zero? x) max (/ 1 x))
+
+-   I told him (that it's not (yet) done). (But he wasn't listening)
+
+
+The function should return false for the following strings:
+
+-   : - )
+
+-   ())(
+
+
+The last example shows that it's not enough to verify that a string contains the same number of opening and closing parentheses.
+
+Do this exercise by implementing the balance function. Its signature is as follows:
+
+```scala
+def balance(chars: List[Char]): Boolean
+```
+
+There are three methods on List[Char] that are useful for this exercise:
+
+-   chars.isEmpty: Boolean returns whether a list is empty
+
+-   chars.head: Char returns the first element of the list
+
+-   chars.tail: List[Char] returns the list without the first element
+
+
+**Hint**: you can define an inner function if you need to pass extra parameters to your function.
+
+**Testing**: You can use the toList method to convert from a String to a List[Char]: e.g. `"(just an) example".toList.`
+
+```scala
+def balance(chars: List[Char]): Boolean = {  
+  var parenthesesStack = new Stack[Char]()  
+  
+  @tailrec def balanceRec(chars: List[Char]): Boolean = {  
+    if (parenthesesStack.isEmpty && chars.isEmpty) true  
+ else if (parenthesesStack.nonEmpty && chars  
+      .isEmpty) false else {  
+      chars.last match {  
+        case ')' => {  
+          parenthesesStack.push(')')  
+          balanceRec(chars.dropRight(1))  
+        }  
+        case '(' => {  
+          if (parenthesesStack.nonEmpty && parenthesesStack.pop == ')') balanceRec(chars.dropRight(1))  
+          else false  
+  }  
+        case _ => balanceRec(chars.dropRight  
+        (1))  
+      }  
+    }  
+  }  
+  
+  val isBalanced = balanceRec(chars)  
+  parenthesesStack = Stack[Char]()  
+  isBalanced  
+  
+}
+```
+
+### Exercise 3: Counting Change
+
+Write a recursive function that counts how many different ways you can make change for an amount, given a list of coin denominations. For example, there are 3 ways to give change for 4 if you have coins with denomination 1 and 2: 1+1+1+1, 1+1+2, 2+2.
+
+Do this exercise by implementing the countChange function  . This function takes an amount to change, and a list of unique denominations for the coins. Its signature is as follows:
+
+```scala
+def countChange(money: Int, coins: List[Int]): Int
+```
+
+Once again, you can make use of functions isEmpty, head and tail on the list of integers coins.
+
+**Hint**: Think of the degenerate cases. How many ways can you give change for 0 dollars? How many ways can you give change for >0 dollars, if you have no coins?
+
+```scala
+def countChange(money: Int, coins: List[Int]): Int = {  
+  if (money < 0 || coins.isEmpty) 0  
+  else if (money == 0) 1  
+  else {  
+    val withFirstCoin = countChange(money - coins.head, coins)  
+    val withoutFirstCoin = countChange(money, coins.drop(1))  
+    withFirstCoin + withoutFirstCoin  
+  }  
+}
+```

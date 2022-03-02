@@ -46,9 +46,9 @@ object Recursion {
       }
     }
 
-    val result = balanceRec(chars)
+    val isBalanced = balanceRec(chars)
     parenthesesStack = Stack[Char]()
-    result
+    isBalanced
 
   }
 
