@@ -1,4 +1,4 @@
-package example
+package coursework
 
 /**
  * This class implements a munit test suite for the methods in object
