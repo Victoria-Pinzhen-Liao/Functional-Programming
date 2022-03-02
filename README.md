@@ -7,9 +7,6 @@
 
 :page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/   :star:
 
--------------------------------------------
-
-These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala
 
 -------------------------------------------
 
@@ -31,8 +28,10 @@ Image source: https://javascript.plainenglish.io/what-are-javascript-programming
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655330430.png)
 
 
-## Imperative Programming (with Mutation )
-- modifying mutable variables,
+## Imperative Programming
+
+In imperative programming, we
+- modify mutable variables,
 - using assignments ( sets and/or re-sets the value stored in the storage location(s) denoted by a variable name)
 - using control structures such as if-then-else, loops, break, continue, return.
 
@@ -43,16 +42,14 @@ image source: https://diu-eil.gricad-pages.univ-grenoble-alpes.fr/archi-robotiqu
 ![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1645655317849.png)
 
 where
-```scala
-- Mutable variables ≈ memory cells 
-- Variable dereferences (used to access or manipulate data contained in the memory location pointed to by a pointer) ≈ load instructions 
-- Variable assignments ≈ store instructions 
+
+- Mutable variables ≈ memory cells
+- Variable dereferences (used to access or manipulate data contained in the memory location pointed to by a pointer) ≈ load instructions
+- Variable assignments ≈ store instructions
 - Control structures ≈ jumps
-```
 
-**Problem**: Hard to scale up ("Von Neumann" bottleneck) - " One tends to conceptualize data structures word-by-word. "
 
-i.e.  Need to define high-level abstractions such as collections, polynomials, geometric shapes, strings, documents
+
 
 
 
@@ -116,7 +113,9 @@ class MutableComplexNumberTest extends munit.FunSuite {
 ```
 
 
-### Issue of Mutation
+### Issues
+
+Issues of Mutation and Imperative Programming
 
 #### In Math
 There is no place for mutation if we implement high-level concepts following their mathematical theories.
@@ -129,9 +128,11 @@ The mutation changes an object and is one common side effect in programming lang
 - Mutation makes code harder to understand: at any time, an array or object may have a different value, so we need to be very careful when reading the code.
 - Mutation of function arguments makes the behaviour of a function surprising.
 
+Also, it's hard to scale up ("Von Neumann" bottleneck)
+- " One tends to conceptualize data structures word-by-word. "
+-   Need to define high-level abstractions such as collections, polynomials, geometric shapes, strings, documents
 
-
-## Functional Programming (with Immutation)
+## Functional Programming
 
 ### Definition
 
@@ -163,20 +164,20 @@ Functions in an FP language are first-class citizens i.e.
 
 ### Benefits
 
-Reduce errors
--   no need to check two places to see all available variables
+1. Reduce errors
+    -   no need to check two places to see all available variables
 
-Increased developer productivity
--  Shorter code
+2. Increased developer productivity
+    -  Shorter code
 
-More philosophical
-- More mathematical
--  Improve modularity
-- Higher-level abstractions
+3. More philosophical
+    - More mathematical
+    -  Improve modularity
+    - Higher-level abstractions
 
-Morden
-- It is an effective tool to handle concurrency and parallelism on every scale
-- Our computers are not Van-Neuman machines anymore. They are parallel
+4. Morden
+    - It is an effective tool to handle concurrency and parallelism on every scale
+    - Our computers are not Van-Neuman machines anymore. They are parallel
 
 ### Coding Example
 
@@ -426,12 +427,12 @@ square(3) + square(4)
 25
 ```
 
-### Result Comparison
+### Comparison
 Both strategies reduce to the same final values as long as
 - the reduced expression consists of pure functions, and
 - both evaluations terminate.
 
-### Performance Comparison
+#### Performance
 
 Say we have a function that takes two inputs and  returns the square of the first input
 i.e. the 2nd input is not used
@@ -450,7 +451,7 @@ squareOfFirstElement(3+4, 2*4)
 
 We want to examine the evaluation strategy and determine which one is faster (fewer steps) in these conditions:
 
-#### Scenario 1
+##### Scenario 1
 
 ```scala
 squareOfFirstElement(2,3)
@@ -475,7 +476,7 @@ squareOfFirstElement(2,3)
 
 Here the result is reached with the same number of steps.
 
-#### Senario 2
+##### Senario 2
 
 ```scala
 squareOfFirstElement(3+4,8)
@@ -503,7 +504,7 @@ call by name:
 ```
 Here call by value is faster.
 
-#### Senario 3
+##### Senario 3
 
 ```scala
 squareOfFirstElement(7,2*4)
@@ -526,7 +527,7 @@ call by name:
 ```
 Here call by name is faster.
 
-#### Senario 4
+##### Senario 4
 
 ```scala
 squareOfFirstElement(3+4, 2*4) 
@@ -557,7 +558,7 @@ call by name:
 The result is reached within the same steps.
 
 
-### Advantage Comparison
+#### Advantage
 Call-by-value
 -  it evaluates every function argument only once
 - avoids the repeated re-computation of argument expressions
@@ -566,7 +567,7 @@ Call-by-name
 - a function argument is not evaluated if the corresponding parameter is unused in the evaluation of the function body.
 
 
-### Termination Comparison
+#### Termination
 
 Call-by-name and call-by-value evaluation strategies reduce an expression to the same value as long as both evaluations terminate.
 
@@ -584,9 +585,7 @@ The other direction is not true.
 | 3           | F          | F           | T         |
 | 4           | T          | F           | T         |
 
-#### Example
-
-Find an expression that terminates under CBN but not under CBV.
+For example: find an expression that terminates under CBN but not under CBV.
 
 ```scala
 def firstByValue(x: Int, y: Int) = x  
@@ -608,6 +607,7 @@ firstByValue(1, loop)
 // Never end
 ```
 
+
 # (2) Scala Basics
 
 ## About
@@ -616,17 +616,16 @@ firstByValue(1, loop)
 
 :page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/   :star:
 
+ 
 -------------------------------------------
 
-These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala
-
--------------------------------------------
-
-This blog helps you
-
-1. Start running Scala on your computer.
-2. Understand `val` vs `var` vs `def` vs method
-3. Understand  the Scala condition blocks
+Topics:
+1. Scala set up
+2.  `val` vs `var` vs `def` vs method
+3.   Condition blocks
+4. Arithmetic and boolean expressions
+5. Semicolons
+6. Blocks and Lexical Scope
 
 -------------------------------------------
 
@@ -690,7 +689,7 @@ val s: String = "hello"
 var i: Int = 42
 ```
 
-### Evaluation Time
+### Performance
 
 `val` and `var` are evaluated when defined.
 
@@ -726,7 +725,7 @@ The general rule is that you should always use a  `val`  field unless there is a
 
 
 
-###  `val`  Fields in the REPL
+###  `val`  in REPL
 
 The REPL is not 100% the same as working with source code in an IDE, so you can do a few things in the REPL that you `cannot` do when working on real-world code in a project.
 
@@ -903,149 +902,22 @@ false || e --> e
 ```
 Note that && and || do not always need their right operand to be evaluated.
 
-# (3) Recursion
 
-## About
+##  Semicolons
 
-:octocat: GitHub: All of the example code: [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
+If there are more than one statements on a line, they need to be separated by semicolons:
 
-:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/   :star:
-
--------------------------------------------
-
-This blog helps you understand
-1. Recursion
-2. Blocks and Lexical Scope
-3. Tail Recursion
-4. Go through coursework solutions
-
--------------------------------------------
-
-## Background
-Recursion is the process of defining a problem (or the solution to a problem) in terms of (a simpler version of) itself.
-For example, we can define the operation "find your way home" as Stop moving if you are at home.
-
-image source: https://stackoverflow.com/questions/13242050/java-recursion-triangle-with-deviation
-![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646007793273.png)
-
-## Recursion Function
-In Scala, recursive functions are functions that include calls to themselves in their definition, they
-
-- do ***not***  always terminated
-- require an explicit return type in Scala (the return type can be omitted in non-recursive functions, but it is required by the compiler for recursive functions)
--  are ***not*** introduced by a dedicated keyword
-
-##  Square Roots with Newton’s Method
-
-We will define in this session a function
 ```scala
-/** Calculates the square root of parameter x */ 
-def sqrt(x: Double): Double = ... 
+val y = x + 1; y * y 
 ```
+Semicolons at the end of lines are usually (and should be) left out.
 
-The classical way to achieve this is by successive approximations using Newton’s method.
-
-To compute sqrt(x):
-- Start with an initial estimate y (let’s pick `y = 1`).
--  Repeatedly improve the estimate by taking the mean of y and x/y.
-
-image source: https://blogs.sas.com/content/iml/2016/05/18/newtons-method-babylonian-square-root.html
-![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646007812068.png)
-
-### Example: x = 2
-
-
-|  Estimation  | Quotient  | Mean  |
-|--------------------|--------------------|----------------|
-| 1                  | 2 / 1=2            | 1.5            |
-| 1.5                | 2 / 1.5=1.333      | 1.4167         |
-| 1.4167             | 2 / 1.4167=1.4118  | 1.4142         |
-| 1.4142             | ...            | ...      |
-
-image source: https://demonstrations.wolfram.com/FindingATangentLineToAParabola/
-![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646007910843.png)
-
-## Implementation in Scala (v1)
-
-1. define a test to check for termination
-2. define a function improve to improve an estimate
-3. define a function that computes one iteration step
-   -  Note that `squareRootIterator` is recursive; its right-hand side calls itself.
-4. define the sqrt function
-
+You could write
 ```scala
-import math.abs  
-
-// define what is "Good enough"  
-val accuracy = 0.001
-
-// define a test to check for terminatation:  
-def isGoodEnough(guessedSquareRoot: Double, squareNum: Double) =  
-  abs(guessedSquareRoot * guessedSquareRoot - squareNum) < accuracy 
-  
-// define a function improve to improve an estimate  
-def improve(guessedSquareRoot: Double, squareNum: Double) =  
-  (guessedSquareRoot + squareNum / guessedSquareRoot) / 2  
-  
-// define a function which computes one iteration step  
-// Note that `squareRootIterator` is recursive, its right-hand side calls itself. 
-
-def squareRootIterator(guessedSquareRoot: Double, squareNum: Double): Double =  
-  if (isGoodEnough(guessedSquareRoot, squareNum)) guessedSquareRoot  
-  else squareRootIterator(improve(guessedSquareRoot, squareNum), squareNum)  
-  
-// define the sqrt function:  
-def squareRoot(squareNum: Double) = squareRootIterator(1.0, squareNum)
-
+val x = 1; 
 ```
+but it would not be very idiomatic in Scala
 
-### Test
-```scala
-// Nod Bad Tests  
-squareRoot(4)  
-// val res0: Double = 2.0000000929222947  
-  
-squareRoot(2)  
-// val res1: Double = 1.4142156862745097
-``` 
-
-
-### Limitation of  v1:
-
-#### Issue 1
-**Double** not accurate: are infinite possible real numbers and an only finite number of bits  to represent these numbers, so:
-
-- The isGoodEnough test is **not very precise** for small numbers
--  The isGoodEnough test is  **non-termination** for very large numbers.
-
-Bad Examples
-- 0.001 - not very precise
-- 10^(50) - non-termination
-
-```scala
-// Bad example
-squareRoot(0.001)  
-// val res2: Double = 0.04124542607499115  
-
-// Correct answer  
-sqrt(0.001) 
-// val res3: Double = 0.03162277660168379  
-
-// -------------------------
-
-val largeNumber: Double = pow(10, 50)  
-
-// Correct answer  
-sqrt(largeNumber) 
-// val res4: Double = 1.0E25  
-
-// Bad example
-squareRoot(largeNumber) 
-// Never terminate 
-```
-#### Issue 2
-
-The code style can be improved.
 
 ##  Blocks and Lexical Scope
 
@@ -1121,63 +993,91 @@ plusFour(3) // val res1: Int = 7
 
 Rule 3/3 Lexical Scoping: Definitions of outer blocks are **visible** inside a block unless they are shadowed.
 
-
-
-
-### #squareRoot Cleaner Code  (v2)
-
-1. Limit visibility of some internal functions
-
-It’s a good functional programming style to split a task into many small functions.
-
-But the names of functions like `sqrtIter, improve, and isGoodEnough` matter only for the implementation of `sqrt`, not for its usage.
-
-Normally we would not like users to access these functions directly.
-
-We can achieve this and at the same time avoid “name-space pollution” by putting the auxiliary functions inside sqrt.
-
 ```scala
-import math.{abs, sqrt, pow}  
-  
-// define the sqrt function:  
-def squareRoot(squareNum: Double) = {  
-  // define what is "Good enough"  
-  val accuracy = 0.001  
-  
-  // define a test to check for terminatation:  
-  def isGoodEnough(guessedSquareRoot: Double, squareNum: Double) =  
-    abs(guessedSquareRoot * guessedSquareRoot - squareNum) < accuracy  
-  
-  // define a function improve to improve an estimate  
-  def improve(guessedSquareRoot: Double, squareNum: Double) =  
-    (guessedSquareRoot + squareNum / guessedSquareRoot) / 2  
-  
-  // define a function which computes one iteration step  
- // Note that `squareRootIterator` is recursive, its right-hand side calls itself.  def squareRootIterator(guessedSquareRoot: Double, squareNum: Double): Double =  
-    if (isGoodEnough(guessedSquareRoot, squareNum)) guessedSquareRoot  
-    else squareRootIterator(improve(guessedSquareRoot, squareNum), squareNum)  
-  
-  squareRootIterator(1.0, squareNum)  
+val a = 2  
+def plusThree(b: Int) = {  
+  a + b + 1 // a = 3  
 }  
   
-squareRoot(4)  
-// val res0: Double = 2.0000000929222947
+plusThree(1) //  val res1: Int = 4
 ```
 
-### Cleaner Code (v3)
 
-According to Rule 3/3 - Definitions of outer blocks are **visible** inside a block unless they are shadowed.
+# (3) Recursion
+
+## About
+
+:octocat: GitHub: All of the example code: [repo (link)](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming)
+
+:page_facing_up:  blog link:  https://purrgramming.life/cs/programming/fp/   :star:
+
+-------------------------------------------
+
+Topics
+1. Recursion
+2. Tail Recursion
+3. Coursework solutions
+
+-------------------------------------------
+
+## Background
+Recursion is the process of defining a problem (or the solution to a problem) in terms of (a simpler version of) itself.
+For example, we can define the operation "find your way home" as Stop moving if you are at home.
+
+image source: https://stackoverflow.com/questions/13242050/java-recursion-triangle-with-deviation
+![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646007793273.png)
+
+## Recursion
+In Scala, recursive functions are functions that include calls to themselves in their definition, they
+
+- do ***not***  always terminated
+- require an explicit return type in Scala (the return type can be omitted in non-recursive functions, but it is required by the compiler for recursive functions)
+-  are ***not*** introduced by a dedicated keyword
+
+### Example: squareRoot
+
+We will define in this session a function
+```scala
+/** Calculates the square root of parameter x */ 
+def squareRoot(x: Double): Double = ... 
+```
+
+The classical way to achieve this is by successive approximations using Newton’s method.
+
+To compute squareRoot(x):
+- Start with an initial estimate y (let’s pick `y = 1`).
+-  Repeatedly improve the estimate by taking the mean of y and x/y.
+
+image source: https://blogs.sas.com/content/iml/2016/05/18/newtons-method-babylonian-square-root.html
+![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646007812068.png)
 
 
-Therefore, we can simplify sqrt by eliminating redundant occurrences of the input parameter `squareNum`, which means everywhere the same thing.
+Example: x = 2
 
+|  Estimation  | Quotient  | Mean  |
+|--------------------|--------------------|----------------|
+| 1                  | 2 / 1=2            | 1.5            |
+| 1.5                | 2 / 1.5=1.333      | 1.4167         |
+| 1.4167             | 2 / 1.4167=1.4118  | 1.4142         |
+| 1.4142             | ...            | ...      |
+
+image source: https://demonstrations.wolfram.com/FindingATangentLineToAParabola/
+![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646007910843.png)
+
+So, let us
+1. define a test to check for termination
+2. define a function improve to improve an estimate
+3. define a function that computes one iteration step
+   -  Note that `squareRootIterator` is recursive; its right-hand side calls itself.
+4. define the squareRoot function
 
 ```scala
 import scala.math.{abs, pow, sqrt}  
   
-// define the sqrt function:  
+// define the squareRoot function:  
 def squareRoot(squareNum: Double) = {  
   // define what is "Good enough"  
+  // Avoid magic numbers 
   val accuracy = 0.001  
   
   // define a test to check for terminatation:  
@@ -1188,25 +1088,75 @@ def squareRoot(squareNum: Double) = {
   def improve(guessedSquareRoot: Double) =  
     (guessedSquareRoot + squareNum / guessedSquareRoot) / 2  
   
-  // define a function which computes one iteration step  
- // Note that `squareRootIterator` is recursive, its right-hand side calls itself.  def squareRootIterator(guessedSquareRoot: Double): Double =  
+ // define a function which computes one iteration step  
+ // Note that `squareRootIterator` is recursive, 
+ // its right-hand side calls itself.  
+
+def squareRootIterator(guessedSquareRoot: Double): Double =  
     if (isGoodEnough(guessedSquareRoot)) guessedSquareRoot  
     else squareRootIterator(improve(guessedSquareRoot))  
   
   squareRootIterator(1.0)  
 }  
   
+// Results are not bad  
 squareRoot(4)  
-// val res0: Double = 2.0000000929222947
+// val res0: Double = 2.0000000929222947  
+squareRoot(2)  
+// val res1: Double = 1.4142156862745097
+``` 
+
+
+### Limitation
+
+**Double** not accurate: are infinite possible real numbers and an only finite number of bits  to represent these numbers, so:
+
+- The isGoodEnough test is **not very precise** for small numbers
+-  The isGoodEnough test is  **non-termination** for very large numbers.
+
+Bad Examples
+- 0.001 - not very precise
+- 10^(50) - non-termination
+
+```scala
+// Bad example
+squareRoot(0.001)  
+// val res2: Double = 0.04124542607499115  
+
+// Correct answer  
+sqrt(0.001) 
+// val res3: Double = 0.03162277660168379  
+
+// -------------------------
+
+val largeNumber: Double = pow(10, 50)  
+
+// Correct answer  
+sqrt(largeNumber) 
+// val res4: Double = 1.0E25  
+
+// Bad example
+squareRoot(largeNumber) 
+// Never terminate 
 ```
 
-#### squareRoot version 2 vs. squareRoot version 3
 
-![file](https://purrgramming.life/wp-content/uploads/2022/02/image-1646169371080.png)
+
 
 ## Tail Recursion
 
-### Function that calls itself as its last action
+### Definition
+
+If a function **calls itself as its last action**, like the reatest common divisor, the function’s stack frame can be **reused** with  tail recursion.
+
+In summary, a tail recursive function
+- are **iterative** processes
+- can be optimized by reusing the stack frame in Scala
+- calls itself as its last action
+
+### Tail Recursion Example
+
+Example of tail recursion functions, i.e. - A recursive function that calls itself as its last action
 
 Impl of the function that computes the greatest common divisor of two numbers using Euclid’s algorithm:
 
@@ -1232,7 +1182,9 @@ gcd(14, 21)// val res0: Int = 7
 //  → 7
 ```
 
-### Function that does NOT call itself as its last action
+### Non Tail Recursion Example
+
+Example of non tail recursion functions, i.e. - A recursive function that does **not** call itself as its last action
 
 
 Consider factorial:
@@ -1250,13 +1202,10 @@ factorial(4) // val res1: Int = 24
 //  →→ 24
 ```
 
-### Tail Recursion
 
-If a function **calls itself as its last action**, like the reatest common divisor, the function’s stack frame can be **reused** with  tail recursion.
+### @tailrec
 
-i.e. Tail recursive functions are **iterative** processes.
-
-To add tail recursive optimization in Scala, we need to add annotation `@tailrec`
+Tail recurssion can be annotated with @tailrec so that the compiler will succeed only if it can verify that the function is indeed tail recursive, i.e. performance  optimization
 
 ```scala
 import scala.annotation.tailrec  
@@ -1265,33 +1214,27 @@ import scala.annotation.tailrec
 }
 ```
 
-If we try to add `tailrec` to `factorial`, we will get error
+Note: If we try to add `tailrec` to non tail recursive functions like `factorial`, we will get error
 ```scala
 @tailrec \\ ERROR: Cannot rewrite recursive call: it is not in tail position  
 def factorial(n: Int): Int =  
   if n == 0 then 1 else n * factorial(n - 1)
 ```
 
-###  Change factorial  to @tailrec
+###  non @tailrec  -> @tailrec
+
+We can change  non @tailrec  recursive functions to  @tailrec
 
 ```scala
 @tailrec def factorialTailRec(n: Int, lastFactorial: Int): Int =  
   if n == 0 then lastFactorial else factorialTailRec(n - 1, n * lastFactorial)  
 
 factorialTailRec(4, 1) // val res1: Int = 24
-```
-
-### Summary
-
-A tail recursive function
-- represents an iterative process
-- can be optimized by reusing the stack frame
-- can be annotated with @tailrec so that the compiler will succeed only if it can verify that the function is indeed tail recursive
-- calls itself as its last action
+``` 
 
 ## W1 Coursework
 
-### Exercise 1: Pascal's Triangle
+###  Pascal's Triangle
 
 The following pattern of numbers is called _Pascal's triangle_.
 
@@ -1339,7 +1282,7 @@ Result
 ```
 
 
-### Exercise 2: Parentheses Balancing
+### Parentheses Balancing
 
 Write a recursive function which verifies the balancing of parentheses in a string, which we represent as a List[Char] not a String. For example, the function should return true for the following strings:
 
@@ -1406,7 +1349,7 @@ def balance(chars: List[Char]): Boolean = {
 }
 ```
 
-### Exercise 3: Counting Change
+###  Counting Change
 
 Write a recursive function that counts how many different ways you can make change for an amount, given a list of coin denominations. For example, there are 3 ways to give change for 4 if you have coins with denomination 1 and 2: 1+1+1+1, 1+1+2, 2+2.
 

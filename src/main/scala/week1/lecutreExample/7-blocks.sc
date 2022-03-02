@@ -40,4 +40,4 @@ def plusThree(b: Int) = {
   a + b + 1 // a = 3
 }
 
-plusThree(1) //
+plusThree(1) // val res2: Int = 4
