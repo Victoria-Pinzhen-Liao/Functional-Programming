@@ -1,32 +1,28 @@
 import scala.annotation.tailrec
 
-// Greatest common divisor
-@tailrec def gcd(a: Int, b: Int): Int = {
-  if b == 0 then a else gcd(b, a % b)
-}
-
 class Rational(x: Int, y: Int) {
 
-  def rationalGcd = {
-    gcd(denom, numer)
+  require(y != 0, "denominator cannot be 0")
+
+  // Greatest common divisor
+  @tailrec private def gcd(a: Int, b: Int): Int = {
+    if b == 0 then a else gcd(b, a % b)
   }
 
-  def clean = {
-    Rational(numer / rationalGcd, denom / rationalGcd)
+  def rationalGcd = {
+    gcd(x, y)
   }
 
   def equals(that: Rational): Boolean = {
-    val cleanThis = this.clean
-    val cleanThat = that.clean
-    cleanThis.numer == cleanThat.numer && cleanThis.denom == cleanThat.denom
+    this.numer == that.numer && this.denom == that.denom
   }
 
   def neg = {
-    Rational(-this.numer, denom).clean
+    Rational(-this.numer, denom)
   }
 
   def mul(that: Rational): Rational = {
-    Rational(this.numer * that.numer, this.denom * that.denom).clean
+    Rational(this.numer * that.numer, this.denom * that.denom)
   }
 
   def div(that: Rational): Rational = {
@@ -37,22 +33,32 @@ class Rational(x: Int, y: Int) {
   def add(that: Rational): Rational = {
     Rational(
       this.numer * that.denom + that.numer * this.denom,
-      this.denom * that.denom).clean
+      this.denom * that.denom)
+  }
+
+  def less(that: Rational): Boolean = {
+    (this.numer / this.denom) < (that.numer / that.denom)
+  }
+
+  def less2(that: Rational): Boolean = {
+    (numer / denom) < (that.numer / that.denom)
   }
 
   def sub(that: Rational): Rational = {
     this add that.neg
   }
 
-  def numer = x
+  def numer = x / rationalGcd
 
-  def denom = {
-    if (y == 0) throw new IllegalArgumentException(s"denom cannot be 0") else y
-  }
+  def denom = y / rationalGcd
 
   override def toString: String = s"${this.numer}/${this.denom}"
 
+  def this(x: Int) = this(x, 1)
+
 }
+
+end Rational
 
 val x = Rational(1, 3)
 val y = Rational(5, 7)
@@ -60,6 +66,10 @@ val z = Rational(3, 2)
 
 val a = Rational(2, 4)
 val b = Rational(4, 2)
+val c = Rational(2)
+
+x less z // val res0: Boolean = true
+x less2 z // val res1: Boolean = true
 
 // val illegal = Rational(4, 0) // IllegalArgumentException: denom cannot be 0
 
@@ -71,4 +81,7 @@ a mul b // val res2: Rational = 1/1
 
 a div a // val res3: Rational = 1/1
 
+Rational(2, 4).toString // val res4: String = 1/2
+
 Rational(2, 4) equals Rational(1, 2) // val res4: Boolean = true
+
