@@ -1,3 +1,4 @@
+
 These are my 
 - study notes 
 - lecture example code
@@ -7,7 +8,7 @@ for Coursera online course [Functional Programming Principles in Scala](https://
 
 ----------
 
-# Code
+# Github
 
 Lecture Examples: https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/LectureNotes
 
