@@ -7,17 +7,6 @@ for Coursera online course [Functional Programming Principles in Scala](https://
 
 ----------
 
-# <i class="fa-brands fa-github"></i> Github
-
-Repo: [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/)
-
-Lecture Examples: [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/LectureExamples/src/main/scala)
-
-Courseworks:  [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/coursework)
-
-
-----------
-
 # <i class="fa-solid fa-pen"></i> Study notes 
 
 [All in one](https://purrgramming.life/cs/programming/fp/)
@@ -52,6 +41,17 @@ Appendix
 
 -   [(R) Reference](https://purrgramming.life/cs/programming/fp/r-reference/)
 
+--------------
+
+----------
+
+# <i class="fa-brands fa-github"></i> Github
+
+Repo: [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/)
+
+Lecture Examples: [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/LectureExamples/src/main/scala)
+
+Courseworks:  [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/coursework)
 
 
 ![](https://purrgramming.life/wp-content/uploads/2022/03/WeChat-Screenshot_20220226230653-edited.png)
