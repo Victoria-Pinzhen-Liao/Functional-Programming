@@ -41,7 +41,6 @@ Appendix
 
 -   [(R) Reference](https://purrgramming.life/cs/programming/fp/r-reference/)
 
---------------
 
 ----------
 
