@@ -13,3 +13,4 @@ logs/
 .vscode
 *.csv
 *.dat
+project/
