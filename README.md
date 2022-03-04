@@ -1,5 +1,4 @@
-
-These are my 
+Welcome to  my 
 - study notes 
 - lecture example code
 - coursework code 
@@ -8,7 +7,7 @@ for Coursera online course [Functional Programming Principles in Scala](https://
 
 ----------
 
-# Github
+# <i class="fa-brands fa-github"></i> Github
 
 Repo: [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/)
 
@@ -19,7 +18,7 @@ Courseworks:  [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-
 
 ----------
 
-# Study notes 
+# <i class="fa-solid fa-pen"></i> Study notes 
 
 Week 1 | Welcome <i class="fa-regular fa-face-smile-wink"></i> | FP Principles and Recursion
 
