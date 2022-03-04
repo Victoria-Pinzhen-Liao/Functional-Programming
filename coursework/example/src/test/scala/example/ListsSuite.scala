@@ -21,7 +21,7 @@ class ListsSuite extends munit.FunSuite:
   }
 
   test("one plus one is three (0pts)?") {
-    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
+    assert(1 + 1 != 3) // This assertion fails! Go ahead and fix it.
   }
 
   /**
@@ -57,7 +57,7 @@ class ListsSuite extends munit.FunSuite:
    * when writing tests.
    */
   test("details why one plus one is not three (0pts)") {
-    assertEquals(1 + 1, 3) // Fix me, please!
+    assertNotEquals(1 + 1, 3) // Fix me, please!
   }
 
   /**
