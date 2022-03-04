@@ -20,6 +20,9 @@ Courseworks:  [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-
 
 # <i class="fa-solid fa-pen"></i> Study notes 
 
+[All in one](https://purrgramming.life/cs/programming/fp/)
+
+
 Week 1 | Welcome <i class="fa-regular fa-face-smile-wink"></i> | FP Principles and Recursion
 
   [(1) Principles of Functional Programming](https://purrgramming.life/cs/programming/fp/w1/principles/)
