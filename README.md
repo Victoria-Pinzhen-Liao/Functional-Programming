@@ -10,7 +10,7 @@ for Coursera online course [Functional Programming Principles in Scala](https://
 
 # Github
 
-Lecture Examples: https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/LectureNotes
+Lecture Examples: https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/LectureExamples
 
 Courseworks:  https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/coursework
 
