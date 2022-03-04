@@ -12,5 +12,7 @@ logs/
 .metals
 .vscode
 *.csv
+.bsp
+.idea
 *.dat
 project/
