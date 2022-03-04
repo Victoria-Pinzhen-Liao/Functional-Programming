@@ -16,7 +16,7 @@ Courseworks:  https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tr
 
 ----------
 
-# Blogs
+# Study notes 
 
 Week 1 | Welcome <i class="fa-regular fa-face-smile-wink"></i> | FP Principles and Recursion
 
