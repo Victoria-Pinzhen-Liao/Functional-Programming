@@ -1,18 +1,19 @@
- 
-These are my lecture notes and code for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala.
+Welcome to  my 
+- study notes 
+- lecture example code
+- coursework code 
+
+for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala.
 
 ----------
 
-# Code
+# <i class="fa-solid fa-pen"></i> Study notes 
 
-Lecture Examples: https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/LectureNotes
-
-Courseworks:  https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/coursework
-
+[All in one](https://purrgramming.life/cs/programming/fp/)
 
 ----------
 
-# Blogs
+
 
 Week 1 | Welcome <i class="fa-regular fa-face-smile-wink"></i> | FP Principles and Recursion
 
@@ -40,6 +41,16 @@ Appendix
 
 -   [(R) Reference](https://purrgramming.life/cs/programming/fp/r-reference/)
 
+
+----------
+
+# <i class="fa-brands fa-github"></i> Github
+
+Repo: [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/)
+
+Lecture Examples: [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/LectureExamples/src/main/scala)
+
+Courseworks:  [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/coursework)
 
 
 ![](https://purrgramming.life/wp-content/uploads/2022/03/WeChat-Screenshot_20220226230653-edited.png)
