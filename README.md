@@ -1,15 +1,10 @@
-Welcome to  my 
-- study notes 
-- lecture example code
-- coursework code 
-
-for Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala.
+For Coursera online course [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/) by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala.
 
 ----------
 
 # <i class="fa-solid fa-pen"></i> Study notes 
 
-[All in one](https://purrgramming.life/cs/programming/fp/)
+[Home Page of Notes](https://purrgramming.life/cs/programming/fp/)
 
 ----------
 
@@ -35,6 +30,8 @@ Week 2 |  **λ**  | Higher-Order Functions and OOP
 
 Week 3 | <i class="fa-solid fa-sitemap"></i>  | Class hierarchies
 
+ [(6) Class Hierarchies](https://purrgramming.life/cs/programming/fp/w3/hierarchies/)
+ 
 ----------
 
 Appendix
