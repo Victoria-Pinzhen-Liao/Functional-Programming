@@ -3,7 +3,7 @@
 
 Coursera online course  [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/)  by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala.
 
-# **Study notes**
+# S**tudy notes**
 
 Week 1 |  | FP Principles and Recursion
 
@@ -17,18 +17,19 @@ Week 2 | λ | Higher-Order Functions and OOP
 -   [(5) Higher-Order Functions](https://purrgramming.life/cs/programming/fp/w2/higher-order-functions/)
 -   [(6) Scala Basics](https://purrgramming.life/cs/programming/fp/w2/scala-2/)
 -   [(7) Classes and Objects](https://purrgramming.life/cs/programming/fp/w2/oop/)
--   [(8) Case Classes and Sealed Types](https://purrgramming.life/cs/programming/fp/w2/8-case-classes-and-sealed-types/)
+-   [(8) Case Classes and Sealed Types](https://purrgramming.life/cs/programming/fp/w2/case-classes-and-sealed-types/)
 
 Week 3 |  | Class hierarchies
 
 -   [( 9) Class Hierarchies](https://purrgramming.life/cs/programming/fp/w3/hierarchies/)
 -   [(10) Pure Object Orientation](https://purrgramming.life/cs/programming/fp/w3/object-orientation/)
--   [(11) Traits](https://purrgramming.life/cs/programming/fp/w3/11-traits/)
+-   [(11) Traits](https://purrgramming.life/cs/programming/fp/w3/trait/)
 -   [(12) Organize Classes](https://purrgramming.life/cs/programming/fp/w3/12-organize-classes/)
 
 Week 4 |  | Types and Pattern Matching
 
 -   [(13) Functional Type Handling](https://purrgramming.life/cs/programming/fp/w4/type/)
+-   [(14) Lists](https://purrgramming.life/cs/programming/fp/w4/list/)
 
 Appendix
 
