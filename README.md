@@ -3,7 +3,9 @@
 
 Coursera online course  [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/)  by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala.
 
-# S**tudy notes**
+# [S**tudy notes**](https://purrgramming.life/cs/programming/fp/)
+
+Ho[me Page: Link](https://purrgramming.life/cs/programming/fp/)
 
 Week 1 |  | FP Principles and Recursion
 
