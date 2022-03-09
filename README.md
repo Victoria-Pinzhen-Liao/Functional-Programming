@@ -3,7 +3,9 @@
 
 Coursera online course  [Functional Programming Principles in Scala](https://www.coursera.org/learn/scala-functional-programming/home/)  by Prof. Martin Odersky from École Polytechnique Fédérale de Lausanne (EPFL), the creator of Scala.
 
-# S**tudy notes**
+# [Study notes](https://purrgramming.life/cs/programming/fp/)
+
+Ho[me Page: Link](https://purrgramming.life/cs/programming/fp/)
 
 Week 1 |  | FP Principles and Recursion
 
@@ -30,6 +32,7 @@ Week 4 |  | Types and Pattern Matching
 
 -   [(13) Functional Type Handling](https://purrgramming.life/cs/programming/fp/w4/type/)
 -   [(14) Lists](https://purrgramming.life/cs/programming/fp/w4/list/)
+-   [(15) Enums](https://purrgramming.life/cs/programming/fp/w4/enums/)
 
 Appendix
 
@@ -41,6 +44,6 @@ Repo:  [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Program
 
 Lecture Examples:  [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/LectureExamples/src/main/scala)
 
-Courseworks:  [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/coursework)
+Courseworks:  [github link](https://github.com/Victoria-Pinzhen-Liao/Functional-Programming/tree/master/Coursework)
 
 ![](https://purrgramming.life/wp-content/uploads/2022/03/WeChat-Screenshot_20220226230653-edited.png)
