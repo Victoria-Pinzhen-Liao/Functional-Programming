@@ -36,7 +36,7 @@ Week 4 |  | Types and Pattern Matching
 
 Appendix
 
--   [(R) Reference](https://purrgramming.life/cs/programming/fp/r-reference/)
+-   [(R) Reference](https://purrgramming.life/cs/programming/fp/reference-fp)
 
 # **Github**
 
