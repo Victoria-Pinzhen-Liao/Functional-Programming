@@ -5,7 +5,7 @@ Sharing my study notes of Coursera’s online course  [Functional Programming Pr
 
 # [**Study notes**](https://purrgramming.life/cs/programming/fp/)
 
-Ho[me Page: Link](https://purrgramming.life/cs/programming/fp/)
+[Home Page: Link](https://purrgramming.life/cs/programming/fp/)
 
 Week 1 |  FP Principles and Recursion
 
