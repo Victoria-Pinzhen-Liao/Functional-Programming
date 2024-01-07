@@ -1,18 +1,51 @@
+# Operating System specific files
 *.DS_Store
+Thumbs.db
+
+# Editor specific files
 *.swp
 *~
 *.class
 *.tasty
+
+# Build outputs
 target/
+project/target/
+project/project/
+lib_managed/
+src_managed/
+.cache
+.history
+.dist
+
+# Logs
 logs/
+*.log
+
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+*.iws
+*.ipr
+# Personal IDE Settings (comment these out if you prefer to keep your IDE settings in the repo)
+/.idea/workspace.xml
+/.idea/tasks.xml
+/.idea/gradle.xml
+/.idea/dictionaries
+
+# Metals, Bloop, and Dotty (Scala language server and build tool files)
+.metals
 .bloop
 .dotty-ide-artifact
 .dotty-ide.json
-.idea
-.metals
+
+# VSCode
 .vscode
+
+# Miscellaneous
 *.csv
-.bsp
-.idea
 *.dat
+.bsp
+
+# SBT specific files (if you're using sbt)
 project/
